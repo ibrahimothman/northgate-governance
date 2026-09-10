@@ -38,7 +38,10 @@ function metricLabel(caveat: GovernanceCaveat): string {
   return labels[caveat.metric ?? ""] ?? "Governance rule";
 }
 
-function formatMetric(value: number | string | undefined, metric?: string): string {
+function formatMetric(
+  value: number | string | undefined,
+  metric?: string,
+): string {
   if (value === undefined) return "Not recorded";
   if (
     typeof value === "number" &&
@@ -56,7 +59,10 @@ function GovernanceCaveats({ caveats }: { caveats: GovernanceCaveat[] }) {
   if (caveats.length === 0) return null;
 
   return (
-    <section className="governance-section" aria-labelledby="governance-heading">
+    <section
+      className="governance-section"
+      aria-labelledby="governance-heading"
+    >
       <div className="governance-heading">
         <div>
           <h3 id="governance-heading">
@@ -64,13 +70,13 @@ function GovernanceCaveats({ caveats }: { caveats: GovernanceCaveat[] }) {
             Governance Context &amp; Registry Caveats
           </h3>
           <p>
-            The answer uses verified catalogue records, but these registry policies
-            are outside their declared thresholds.
+            The answer uses verified catalogue records, but these registry
+            policies are outside their declared thresholds.
           </p>
         </div>
         <span className="attention-badge">
-          {caveats.length} {caveats.length === 1 ? "Policy" : "Policies"} Failing
-          Thresholds
+          {caveats.length} {caveats.length === 1 ? "Policy" : "Policies"}{" "}
+          Failing Thresholds
         </span>
       </div>
       <div className="caveat-grid">
@@ -91,11 +97,13 @@ function GovernanceCaveats({ caveats }: { caveats: GovernanceCaveat[] }) {
             <div className="metric-comparison">
               <div>
                 <span>Metric:</span>
-                <strong>{metricLabel(caveat)} {formatMetric(caveat.actual, caveat.metric)}</strong>
+                <strong>
+                  {metricLabel(caveat)}{" "}
+                  {formatMetric(caveat.actual, caveat.metric)}
+                </strong>
                 <span className="metric-target">
-                  (Target:{" "}
-                  {caveat.operator} {formatMetric(caveat.threshold, caveat.metric)}
-                  )
+                  (Target: {caveat.operator}{" "}
+                  {formatMetric(caveat.threshold, caveat.metric)})
                 </span>
               </div>
             </div>
@@ -122,13 +130,17 @@ function ResultView({
       className={`result-shell result-shell--${result.result_type}`}
       aria-label="Governed result"
     >
-      <article className={`answer-summary-card answer-summary-card--${result.result_type}`}>
+      <article
+        className={`answer-summary-card answer-summary-card--${result.result_type}`}
+      >
         <div className="answer-summary-meta">
           <span className="result-type-badge">{resultLabel}</span>
           <div>
             {result.meta?.duration_ms !== undefined && (
               <>
-                <span>Latency: <strong>{result.meta.duration_ms}ms</strong></span>
+                <span>
+                  Latency: <strong>{result.meta.duration_ms}ms</strong>
+                </span>
                 <span className="meta-separator">·</span>
               </>
             )}
@@ -152,7 +164,11 @@ function ResultView({
             <h3 id="sources-heading">Sources:</h3>
             <div className="source-list">
               {result.citations.map((citation) => (
-                <span className="source-chip" key={citation.uri} title={citation.uri}>
+                <span
+                  className="source-chip"
+                  key={citation.uri}
+                  title={citation.uri}
+                >
                   {citation.label}
                 </span>
               ))}
@@ -197,7 +213,10 @@ export function GovernanceAssistant() {
       const nextResult = await askQuestion(trimmed);
       setResult(nextResult);
       window.setTimeout(() => {
-        resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        resultRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }, 50);
     } catch (requestError) {
       setError(
@@ -233,7 +252,6 @@ export function GovernanceAssistant() {
               <strong>Northgate</strong>
               <span>Enterprise Governance</span>
             </div>
-            <span className="environment-badge">Governed catalogue</span>
           </nav>
 
           <form className="question-composer" onSubmit={onSubmit}>
@@ -289,7 +307,9 @@ export function GovernanceAssistant() {
               </span>
               <div>
                 <strong>Consulting governed catalogue...</strong>
-                <span>Checking enterprise records and their governance context.</span>
+                <span>
+                  Checking enterprise records and their governance context.
+                </span>
               </div>
             </div>
           )}
@@ -305,18 +325,10 @@ export function GovernanceAssistant() {
           )}
 
           {result && (
-            <ResultView result={result} onOpenTrace={() => setTraceOpen(true)} />
-          )}
-
-          {!loading && !error && !result && (
-            <div className="empty-state" aria-hidden="true">
-              <div className="empty-rule" />
-              <div className="empty-summary">
-                <span><Database size={14} /> Catalogue evidence</span>
-                <span><ShieldAlert size={14} /> Governance caveats</span>
-                <span><Braces size={14} /> Observable trace</span>
-              </div>
-            </div>
+            <ResultView
+              result={result}
+              onOpenTrace={() => setTraceOpen(true)}
+            />
           )}
         </div>
       </main>
