@@ -1,0 +1,149 @@
+{
+  "case_id": "Q8",
+  "question": "How complete is our application data?",
+  "passed": true,
+  "highest_failure_severity": null,
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 5,
+      "checks_total": 5
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    },
+    "citations": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "required_call:application_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_registry_health",
+        "arguments": {
+          "registry": "application",
+          "as_of": "2026-09-08"
+        }
+      },
+      "actual": {
+        "registry": "application",
+        "as_of": "2026-09-08"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "declared_metric_used",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "owner_completeness_actual",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": 0.8666666666666667,
+      "actual": 0.8666666666666667,
+      "explanation": ""
+    },
+    {
+      "name": "owner_completeness_threshold",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": 0.95,
+      "actual": 0.95,
+      "explanation": ""
+    },
+    {
+      "name": "rule_fails",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "fail",
+      "actual": "fail",
+      "explanation": ""
+    },
+    {
+      "name": "missing_owner_evidence",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": [
+        "pharmatrack-sth",
+        "rxbridge-riv"
+      ],
+      "actual": [
+        "pharmatrack-sth",
+        "rxbridge-riv"
+      ],
+      "explanation": ""
+    },
+    {
+      "name": "metric_stated_in_answer",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "missing_apps_named",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://registry/application-registry"
+      ],
+      "actual": [
+        "northgate://registry/application-registry"
+      ],
+      "explanation": ""
+    }
+  ],
+  "note": "Direct grading of the declared application owner-completeness rule."
+}

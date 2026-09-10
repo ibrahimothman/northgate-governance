@@ -1,0 +1,145 @@
+{
+  "case_id": "Q6",
+  "question": "How long do we keep inpatient clinical records?",
+  "passed": true,
+  "highest_failure_severity": null,
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "citations": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "required_call:fetch_dataset",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_entity",
+        "arguments": {
+          "entity_type": "dataset",
+          "identifier": "Inpatient Clinical Record"
+        }
+      },
+      "actual": {
+        "entity_type": "dataset",
+        "identifier": "inpatient clinical records"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "forbidden_tool:get_registry_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "dataset_retention",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "30 years from date of last attendance",
+      "actual": "30 years from date of last attendance",
+      "explanation": ""
+    },
+    {
+      "name": "dataset_classification",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "RESTRICTED",
+      "actual": "RESTRICTED",
+      "explanation": ""
+    },
+    {
+      "name": "dataset_steward",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "Health Information Management",
+      "actual": "Health Information Management",
+      "explanation": ""
+    },
+    {
+      "name": "exact_retention_stated",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "no_alternative_retention_period",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "only 30-year retention",
+      "actual": [
+        30
+      ],
+      "explanation": ""
+    },
+    {
+      "name": "no_dataset_registry_claim",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://dataset/inpatient-clinical-record"
+      ],
+      "actual": [
+        "northgate://dataset/inpatient-clinical-record"
+      ],
+      "explanation": ""
+    }
+  ],
+  "note": "Governance trap: preserve exact catalogue retention and avoid invented registry behavior."
+}

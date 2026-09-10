@@ -1,0 +1,196 @@
+relationships:
+- id: rel-clinicaone-clinical-care
+  from_entity: clinicaone-ehr-ngc
+  to_entity: clinical-care-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-riverchart-clinical-care
+  from_entity: riverchart-clinical-riv
+  to_entity: clinical-care-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-helixcare-clinical-care
+  from_entity: helixcare-record-sth
+  to_entity: clinical-care-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-rehabflow-clinical-care
+  from_entity: rehabflow-sth
+  to_entity: clinical-care-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-medcore-medication-management
+  from_entity: medcore-pharmacy-ngc
+  to_entity: medication-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-rxbridge-medication-management
+  from_entity: rxbridge-riv
+  to_entity: medication-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-pharmatrack-medication-management
+  from_entity: pharmatrack-sth
+  to_entity: medication-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-diagsphere-diagnostics
+  from_entity: diagsphere-ngc
+  to_entity: diagnostic-services-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-riverlab-diagnostics
+  from_entity: riverlab-imaging-riv
+  to_entity: diagnostic-services-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-insightdx-diagnostics
+  from_entity: insightdx-sth
+  to_entity: diagnostic-services-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-portal-patient-administration
+  from_entity: mynorthgate-portal
+  to_entity: patient-administration
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-careschedule-patient-administration
+  from_entity: careschedule
+  to_entity: patient-administration
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-revenuecare-patient-administration
+  from_entity: northgate-revenuecare
+  to_entity: patient-administration
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-document-hub-health-information
+  from_entity: northgate-document-hub
+  to_entity: health-information-management
+  relationship_type: application → capability
+  predicate: REALIZES
+- id: rel-clinicaone-rhel9
+  from_entity: clinicaone-ehr-ngc
+  to_entity: rhel-9
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-riverchart-postgresql15
+  from_entity: riverchart-clinical-riv
+  to_entity: postgresql-15
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-helixcare-postgresql11
+  from_entity: helixcare-record-sth
+  to_entity: postgresql-11
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-medcore-postgresql16
+  from_entity: medcore-pharmacy-ngc
+  to_entity: postgresql-16
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-rxbridge-postgresql11
+  from_entity: rxbridge-riv
+  to_entity: postgresql-11
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-rxbridge-tomcat85
+  from_entity: rxbridge-riv
+  to_entity: tomcat-8-5
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-pharmatrack-windows2019
+  from_entity: pharmatrack-sth
+  to_entity: windows-server-2019
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-diagsphere-windows2022
+  from_entity: diagsphere-ngc
+  to_entity: windows-server-2022
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-riverlab-postgresql11
+  from_entity: riverlab-imaging-riv
+  to_entity: postgresql-11
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-insightdx-tomcat101
+  from_entity: insightdx-sth
+  to_entity: tomcat-10-1
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-portal-node18
+  from_entity: mynorthgate-portal
+  to_entity: nodejs-18
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-careschedule-node22
+  from_entity: careschedule
+  to_entity: nodejs-22
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-document-hub-windows2022
+  from_entity: northgate-document-hub
+  to_entity: windows-server-2022
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-revenuecare-postgresql15
+  from_entity: northgate-revenuecare
+  to_entity: postgresql-15
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-connecthub-rhel8
+  from_entity: connecthub-integration
+  to_entity: rhel-8
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-rehabflow-mysql57
+  from_entity: rehabflow-sth
+  to_entity: mysql-5-7
+  relationship_type: application → technology
+  predicate: DEPENDS_ON
+- id: rel-document-hub-inpatient-record
+  from_entity: northgate-document-hub
+  to_entity: inpatient-clinical-record
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-clinicaone-patient-master
+  from_entity: clinicaone-ehr-ngc
+  to_entity: patient-master-data
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-medcore-medication-data
+  from_entity: medcore-pharmacy-ngc
+  to_entity: medication-orders-administration
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-rxbridge-medication-data
+  from_entity: rxbridge-riv
+  to_entity: medication-orders-administration
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-diagsphere-diagnostic-data
+  from_entity: diagsphere-ngc
+  to_entity: diagnostic-orders-results
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-careschedule-appointments
+  from_entity: careschedule
+  to_entity: appointments-encounters
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-revenuecare-billing
+  from_entity: northgate-revenuecare
+  to_entity: billing-claims
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-clinicaone-research-extracts
+  from_entity: clinicaone-ehr-ngc
+  to_entity: research-extracts
+  relationship_type: application → dataset
+  predicate: HANDLES
+- id: rel-portal-published-statistics
+  from_entity: mynorthgate-portal
+  to_entity: published-activity-statistics
+  relationship_type: application → dataset
+  predicate: HANDLES

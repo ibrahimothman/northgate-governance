@@ -1,0 +1,353 @@
+{
+  "timestamp_utc": "2026-09-09T13:49:26.208886+00:00",
+  "question": "What's affected if we retire PostgreSQL 11?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_0ab18861f662834d006aa163d27a4c87d1b3f600e88f41ae39",
+    "resp_0ab18861f662834d006aa163d5f42c87d18cc2cb6f9c3236b7",
+    "resp_0ab18861f662834d006aa163d9a4e887d19f0b40e0aee5f6f1",
+    "resp_0ab18861f662834d006aa163dc384c87d19182c435f9800c2c",
+    "resp_0ab18861f662834d006aa163de31b487d1a66e4ac6520f96c8"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_entity",
+      "arguments": {
+        "entity_type": "technology",
+        "identifier": "PostgreSQL 11"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "entity_type": "technology",
+        "entity_url": "northgate://technology/postgresql-11",
+        "id": "postgresql-11",
+        "last_verified": "2026-08-05",
+        "lifecycle_source": "endoflife.date",
+        "lifecycle_status": "end_of_life",
+        "name": "PostgreSQL 11",
+        "product": "PostgreSQL",
+        "source_product": "postgresql",
+        "source_registry": "technology_registry",
+        "support_end_date": "2023-11-09",
+        "support_phase": "ended",
+        "technology_type": "database",
+        "vendor": "PostgreSQL Global Development Group",
+        "version": "11",
+        "match_type": "exact"
+      },
+      "call_id": "call_8LTGPU65CFjt8rPyydN3Xi3k"
+    },
+    {
+      "sequence": 2,
+      "name": "traverse",
+      "arguments": {
+        "depth": 1,
+        "from_entity": "postgresql-11",
+        "relationship_type": "application → technology"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "from_entity": {
+          "entity_type": "technology",
+          "id": "postgresql-11",
+          "entity_url": "northgate://technology/postgresql-11"
+        },
+        "relationship_type": "application → technology",
+        "depth": 1,
+        "results": [
+          {
+            "relationship_id": "rel-helixcare-postgresql11",
+            "relationship_type": "application → technology",
+            "predicate": "DEPENDS_ON",
+            "direction": "reverse",
+            "entity": {
+              "entity_type": "application",
+              "application_type": "clinical_records",
+              "business_name": "Clinical Records System",
+              "description": "Clinical record platform used by St. Helen's Specialist Hospital, with local configuration supporting elective surgery and rehabilitation workflows.",
+              "entity_url": "northgate://application/helixcare-record-sth",
+              "id": "helixcare-record-sth",
+              "last_verified": "2026-08-30",
+              "lifecycle_status": "migrate",
+              "merger_status": "site_specific",
+              "name": "HelixCare Record",
+              "owner": "St. Helen's Medical Director",
+              "site": "STH",
+              "source_registry": "application_registry",
+              "steward": "Clinical Applications Team"
+            }
+          },
+          {
+            "relationship_id": "rel-riverlab-postgresql11",
+            "relationship_type": "application → technology",
+            "predicate": "DEPENDS_ON",
+            "direction": "reverse",
+            "entity": {
+              "entity_type": "application",
+              "application_type": "diagnostics",
+              "business_name": "Diagnostic System",
+              "description": "Riverside diagnostic platform supporting laboratory and imaging workflows. Operationally important but dependent on legacy technology scheduled for remediation.",
+              "entity_url": "northgate://application/riverlab-imaging-riv",
+              "id": "riverlab-imaging-riv",
+              "last_verified": "2026-08-27",
+              "lifecycle_status": "migrate",
+              "merger_status": "site_specific",
+              "name": "RiverLab Imaging",
+              "owner": "Riverside Diagnostics Director",
+              "site": "RIV",
+              "source_registry": "application_registry",
+              "steward": "Diagnostic Systems Team"
+            }
+          },
+          {
+            "relationship_id": "rel-rxbridge-postgresql11",
+            "relationship_type": "application → technology",
+            "predicate": "DEPENDS_ON",
+            "direction": "reverse",
+            "entity": {
+              "entity_type": "application",
+              "application_type": "pharmacy",
+              "business_name": "Pharmacy System",
+              "description": "Riverside pharmacy platform supporting medication ordering, dispensing and administration. Retained as a critical local system but carrying significant technology lifecycle risk.",
+              "entity_url": "northgate://application/rxbridge-riv",
+              "id": "rxbridge-riv",
+              "last_verified": "2026-08-28",
+              "lifecycle_status": "migrate",
+              "merger_status": "site_specific",
+              "name": "RxBridge",
+              "owner": null,
+              "site": "RIV",
+              "source_registry": "application_registry",
+              "steward": "Pharmacy Digital Systems"
+            }
+          }
+        ]
+      },
+      "call_id": "call_juU7jC1gCkavETuipX4zbCBb"
+    },
+    {
+      "sequence": 3,
+      "name": "get_registry_health",
+      "arguments": {
+        "registry": "technology_registry",
+        "as_of": "2026-09-08"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "registry": {
+          "id": "technology_registry",
+          "name": "Technology Registry",
+          "steward": "Technology Architecture",
+          "classification": "INTERNAL",
+          "source_systems": [
+            "Architecture Repository",
+            "endoflife.date"
+          ],
+          "refresh_cadence": "monthly",
+          "last_refreshed": "2026-08-05",
+          "entity_url": "northgate://registry/technology-registry"
+        },
+        "as_of": "2026-09-08",
+        "rules": [
+          {
+            "id": "technology-application-linkage",
+            "metric": "relationship_coverage",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "technology-lifecycle-completeness",
+            "metric": "field_completeness",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "technology-verification-freshness",
+            "metric": "maximum_age_days",
+            "operator": "less_than_or_equal",
+            "threshold": 30.0,
+            "actual": 34.0,
+            "passed": false,
+            "status": "fail",
+            "evidence": [
+              {
+                "identifier": "mysql-5-7",
+                "name": "MySQL 5.7",
+                "age_days": 34
+              },
+              {
+                "identifier": "nodejs-18",
+                "name": "Node.js 18",
+                "age_days": 34
+              },
+              {
+                "identifier": "nodejs-22",
+                "name": "Node.js 22",
+                "age_days": 34
+              },
+              {
+                "identifier": "postgresql-11",
+                "name": "PostgreSQL 11",
+                "age_days": 34
+              },
+              {
+                "identifier": "postgresql-15",
+                "name": "PostgreSQL 15",
+                "age_days": 34
+              },
+              {
+                "identifier": "postgresql-16",
+                "name": "PostgreSQL 16",
+                "age_days": 34
+              },
+              {
+                "identifier": "rhel-8",
+                "name": "Red Hat Enterprise Linux 8",
+                "age_days": 34
+              },
+              {
+                "identifier": "rhel-9",
+                "name": "Red Hat Enterprise Linux 9",
+                "age_days": 34
+              },
+              {
+                "identifier": "tomcat-10-1",
+                "name": "Apache Tomcat 10.1",
+                "age_days": 34
+              },
+              {
+                "identifier": "tomcat-8-5",
+                "name": "Apache Tomcat 8.5",
+                "age_days": 34
+              },
+              {
+                "identifier": "windows-server-2019",
+                "name": "Windows Server 2019",
+                "age_days": 34
+              },
+              {
+                "identifier": "windows-server-2022",
+                "name": "Windows Server 2022",
+                "age_days": 34
+              }
+            ]
+          }
+        ],
+        "overall_status": "fail"
+      },
+      "call_id": "call_uNBFKxPiFjdaB20AbdQGWWOo"
+    },
+    {
+      "sequence": 4,
+      "name": "get_registry_health",
+      "arguments": {
+        "registry": "application_registry",
+        "as_of": "2026-09-08"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "registry": {
+          "id": "application_registry",
+          "name": "Application Registry",
+          "steward": "Enterprise Architecture",
+          "classification": "INTERNAL",
+          "source_systems": [
+            "Architecture Repository",
+            "Application Owner Attestations"
+          ],
+          "refresh_cadence": "monthly",
+          "last_refreshed": "2026-09-01",
+          "entity_url": "northgate://registry/application-registry"
+        },
+        "as_of": "2026-09-08",
+        "rules": [
+          {
+            "id": "application-owner-completeness",
+            "metric": "field_completeness",
+            "operator": "greater_than_or_equal",
+            "threshold": 0.95,
+            "actual": 0.8666666666666667,
+            "passed": false,
+            "status": "fail",
+            "evidence": [
+              {
+                "identifier": "pharmatrack-sth",
+                "name": "PharmaTrack"
+              },
+              {
+                "identifier": "rxbridge-riv",
+                "name": "RxBridge"
+              }
+            ]
+          },
+          {
+            "id": "application-site-completeness",
+            "metric": "field_completeness",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "business-application-capability-coverage",
+            "metric": "relationship_coverage",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          }
+        ],
+        "overall_status": "fail"
+      },
+      "call_id": "call_shkIaPgqwzF1B5cnrrJjpI7G"
+    }
+  ],
+  "final_answer": "Retiring PostgreSQL 11 directly affects three applications:\n\n- HelixCare Record at STH (northgate://application/helixcare-record-sth)\n- RiverLab Imaging at RIV (northgate://application/riverlab-imaging-riv)\n- RxBridge at RIV; its owner is unassigned, with Pharmacy Digital Systems as steward (northgate://application/rxbridge-riv)\n\nPostgreSQL 11 is already end-of-life (northgate://technology/postgresql-11).\n\n**Data-quality caveats:** Technology verification is 34 days old versus a 30-day limit (northgate://registry/technology-registry). Application-owner completeness is 86.7%, below the 95% threshold (northgate://registry/application-registry).",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://application/helixcare-record-sth",
+      "northgate://application/riverlab-imaging-riv",
+      "northgate://application/rxbridge-riv",
+      "northgate://registry/application-registry",
+      "northgate://registry/technology-registry",
+      "northgate://technology/postgresql-11"
+    ],
+    "cited_urls": [
+      "northgate://application/helixcare-record-sth",
+      "northgate://application/riverlab-imaging-riv",
+      "northgate://application/rxbridge-riv",
+      "northgate://registry/application-registry",
+      "northgate://registry/technology-registry",
+      "northgate://technology/postgresql-11"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q5",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "17-46-45",
+    "replicate": 2,
+    "case_id": "Q5",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

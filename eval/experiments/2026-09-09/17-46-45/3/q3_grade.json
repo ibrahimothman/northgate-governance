@@ -1,0 +1,140 @@
+{
+  "case_id": "Q3",
+  "question": "What does Inpatient Day Case mean?",
+  "passed": false,
+  "highest_failure_severity": "minor",
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "citations": {
+      "passed": false,
+      "checks_passed": 1,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "expected_tool",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "search_glossary",
+      "actual": "search_glossary",
+      "explanation": ""
+    },
+    {
+      "name": "tool_arguments",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "term": "Inpatient Day Case",
+        "matching": "case_insensitive_exact"
+      },
+      "actual": {
+        "term": "Inpatient Day Case"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "deprecated_term_retrieved",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "inpatient-day-case",
+      "actual": "inpatient-day-case",
+      "explanation": ""
+    },
+    {
+      "name": "deprecated_status",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "deprecated",
+      "actual": "deprecated",
+      "explanation": ""
+    },
+    {
+      "name": "correct_replacement",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": {
+        "identifier": "day-procedure",
+        "name": "Day Procedure",
+        "status": "active"
+      },
+      "actual": {
+        "identifier": "day-procedure",
+        "name": "Day Procedure",
+        "status": "active",
+        "entity_url": "northgate://glossary/day-procedure"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "deprecation_stated",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "answer explicitly states deprecated",
+      "actual": "**Inpatient Day Case** is a deprecated term for planned hospital treatment completed without an overnight stay. Use **Day Procedure** instead. (northgate://glossary/inpatient-day-case)",
+      "explanation": ""
+    },
+    {
+      "name": "replacement_stated",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "Day Procedure",
+      "actual": "**Inpatient Day Case** is a deprecated term for planned hospital treatment completed without an overnight stay. Use **Day Procedure** instead. (northgate://glossary/inpatient-day-case)",
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": false,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://glossary/day-procedure",
+        "northgate://glossary/inpatient-day-case"
+      ],
+      "actual": [
+        "northgate://glossary/inpatient-day-case"
+      ],
+      "explanation": ""
+    }
+  ],
+  "note": "Deterministic grader for deprecation and replacement handling."
+}

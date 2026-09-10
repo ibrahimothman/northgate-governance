@@ -10,3 +10,25 @@ This project governs architecture metadata as a data asset, and puts an agent ov
 
 1. A reference EA model contained 0 properties, 0 constraints, 0 dates on elements, and 1 documentation field. EA describes structure, not who may keep what, at what sensitivity, for how long.
 2. OpenMetadata has no first-class Application or Capability entity. The catalogue side of the gap is equally real.
+
+## Run the web application
+
+The web UI uses the live catalogue agent through the structured FastAPI adapter.
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m uvicorn src.api:app --reload --port 8000
+```
+
+In a second terminal:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`. The backend URL defaults to
+`http://localhost:8000`; copy `frontend/.env.example` to
+`frontend/.env.local` to override it.

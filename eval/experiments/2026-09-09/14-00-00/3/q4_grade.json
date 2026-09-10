@@ -1,0 +1,140 @@
+{
+  "case_id": "Q4",
+  "question": "What is an encounter?",
+  "passed": true,
+  "highest_failure_severity": null,
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "citations": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "expected_tool",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "search_glossary",
+      "actual": "search_glossary",
+      "explanation": ""
+    },
+    {
+      "name": "tool_arguments",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "term": "Encounter",
+        "matching": "case_insensitive_exact"
+      },
+      "actual": {
+        "term": "encounter"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "alias_term_retrieved",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "encounter",
+      "actual": "encounter",
+      "explanation": ""
+    },
+    {
+      "name": "alias_status",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "alias",
+      "actual": "alias",
+      "explanation": ""
+    },
+    {
+      "name": "correct_canonical_target",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": {
+        "identifier": "episode-of-care",
+        "name": "Episode of Care",
+        "status": "active"
+      },
+      "actual": {
+        "identifier": "episode-of-care",
+        "name": "Episode of Care",
+        "definition": "A bounded period of healthcare activity relating to a particular clinical need, condition or course of treatment.",
+        "status": "active",
+        "entity_url": "northgate://glossary/episode-of-care"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "alias_stated",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "answer explicitly states Encounter is an alias",
+      "actual": "“Encounter” is an alias for **Episode of Care**: a bounded period of healthcare activity relating to a particular clinical need, condition, or course of treatment. (northgate://glossary/episode-of-care)",
+      "explanation": ""
+    },
+    {
+      "name": "canonical_term_stated",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "Episode of Care",
+      "actual": "“Encounter” is an alias for **Episode of Care**: a bounded period of healthcare activity relating to a particular clinical need, condition, or course of treatment. (northgate://glossary/episode-of-care)",
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://glossary/episode-of-care"
+      ],
+      "actual": [
+        "northgate://glossary/episode-of-care"
+      ],
+      "explanation": ""
+    }
+  ],
+  "note": "Deterministic grader for alias-to-canonical resolution."
+}

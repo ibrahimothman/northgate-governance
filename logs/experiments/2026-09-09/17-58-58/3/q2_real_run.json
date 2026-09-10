@@ -1,0 +1,56 @@
+{
+  "timestamp_utc": "2026-09-09T14:01:46.747463+00:00",
+  "question": "Who owns Legacy MRN?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_01c9612231e55ac7006aa166c04bec87d1a94f0bf08848e2b9",
+    "resp_01c9612231e55ac7006aa166c5228c87d1841ba7010b3e2619",
+    "resp_01c9612231e55ac7006aa166c854bc87d1bb880afe65b60091"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_entity",
+      "arguments": {
+        "entity_type": "dataset",
+        "identifier": "Legacy MRN"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found"
+      },
+      "call_id": "call_WgKN3FyV4ihbHMA49UkHR4os"
+    },
+    {
+      "sequence": 2,
+      "name": "identify_steward",
+      "arguments": {
+        "topic": "Ownership of Legacy MRN"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found",
+        "topic": "Ownership of Legacy MRN",
+        "reason": "No governed registry could be determined from the topic."
+      },
+      "call_id": "call_QIwycPAnPqrS9n1GCpHzNu6l"
+    }
+  ],
+  "final_answer": "The catalogue has no dataset record for “Legacy MRN,” and no governed escalation route could be determined. This does not mean it is absent from Northgate’s estate.",
+  "citations": {
+    "retrieved_urls": [],
+    "cited_urls": [],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q2",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "17-58-58",
+    "replicate": 3,
+    "case_id": "Q2",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

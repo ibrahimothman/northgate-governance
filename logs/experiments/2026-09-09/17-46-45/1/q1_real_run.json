@@ -1,0 +1,100 @@
+{
+  "timestamp_utc": "2026-09-09T13:46:56.474807+00:00",
+  "question": "What is a patient?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_06f6dae367ad07a3006aa16349152c87d197dd011412e0181d",
+    "resp_06f6dae367ad07a3006aa1634d4e5087d19e8cf4621d64e7d6"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "search_glossary",
+      "arguments": {
+        "term": "patient"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "query": "patient",
+        "match_type": "exact",
+        "results": [
+          {
+            "entity_type": "glossary",
+            "alias_of": null,
+            "canonical": false,
+            "context": "Revenue Cycle",
+            "definition": "An individual to whom a billable healthcare service, charge, account or claim is associated for revenue-cycle processing.",
+            "entity_url": "northgate://glossary/patient-billing",
+            "governance_note": "One of three surviving definitions inherited through the merger. No enterprise-wide canonical definition has been declared.",
+            "id": "patient-billing",
+            "owner": "Director of Revenue Cycle",
+            "replaced_by": null,
+            "status": "active",
+            "steward": "Revenue Cycle Management",
+            "synonyms": [],
+            "term": "Patient"
+          },
+          {
+            "entity_type": "glossary",
+            "alias_of": null,
+            "canonical": false,
+            "context": "Clinical",
+            "definition": "An individual receiving or registered to receive clinical assessment, treatment, monitoring or care from Northgate Health Group.",
+            "entity_url": "northgate://glossary/patient-clinical",
+            "governance_note": "One of three surviving definitions inherited through the merger. No enterprise-wide canonical definition has been declared.",
+            "id": "patient-clinical",
+            "owner": "Chief Medical Officer",
+            "replaced_by": null,
+            "status": "active",
+            "steward": "Clinical Governance",
+            "synonyms": [],
+            "term": "Patient"
+          },
+          {
+            "entity_type": "glossary",
+            "alias_of": null,
+            "canonical": false,
+            "context": "Research",
+            "definition": "An individual whose healthcare information is represented in an approved research dataset or study population.",
+            "entity_url": "northgate://glossary/patient-research",
+            "governance_note": "One of three surviving definitions inherited through the merger. No enterprise-wide canonical definition has been declared.",
+            "id": "patient-research",
+            "owner": "Director of Research",
+            "replaced_by": null,
+            "status": "active",
+            "steward": "Research Governance",
+            "synonyms": [],
+            "term": "Patient"
+          }
+        ]
+      },
+      "call_id": "call_lvGJ7yn33rN2Njo9PpBsZS8X"
+    }
+  ],
+  "final_answer": "“Patient” has no enterprise-wide canonical definition. Three definitions remain:\n\n- **Clinical:** An individual receiving or registered to receive clinical assessment, treatment, monitoring, or care from Northgate Health Group. (northgate://glossary/patient-clinical)\n- **Revenue Cycle:** An individual associated with a billable healthcare service, charge, account, or claim. (northgate://glossary/patient-billing)\n- **Research:** An individual whose healthcare information appears in an approved research dataset or study population. (northgate://glossary/patient-research)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://glossary/patient-billing",
+      "northgate://glossary/patient-clinical",
+      "northgate://glossary/patient-research"
+    ],
+    "cited_urls": [
+      "northgate://glossary/patient-billing",
+      "northgate://glossary/patient-clinical",
+      "northgate://glossary/patient-research"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q1",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "17-46-45",
+    "replicate": 1,
+    "case_id": "Q1",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

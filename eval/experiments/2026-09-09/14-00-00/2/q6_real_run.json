@@ -1,0 +1,56 @@
+{
+  "timestamp_utc": "2026-09-09T10:00:37.829873+00:00",
+  "question": "How long do we keep inpatient clinical records?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_02281cdcc4f20076006aa12e3fa34487d1a7be5378b8924084",
+    "resp_02281cdcc4f20076006aa12e41afd887d1a85def83a2b2d007",
+    "resp_02281cdcc4f20076006aa12e44071087d1971a634b77cada2c"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "search_glossary",
+      "arguments": {
+        "term": "inpatient clinical records"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found",
+        "query": "inpatient clinical records",
+        "results": []
+      },
+      "call_id": "call_WyNR04FmQzSozS0L90d1pBbV"
+    },
+    {
+      "sequence": 2,
+      "name": "identify_steward",
+      "arguments": {
+        "topic": "retention period for inpatient clinical records"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found",
+        "topic": "retention period for inpatient clinical records",
+        "reason": "No governed registry could be determined from the topic."
+      },
+      "call_id": "call_rHYlQlUSNMhjBTTNQoiE4ZW4"
+    }
+  ],
+  "final_answer": "The catalogue has no record for “inpatient clinical records,” and no governed escalation route could be determined.",
+  "citations": {
+    "retrieved_urls": [],
+    "cited_urls": [],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q6",
+  "experiment": {
+    "date": "2026-09-09",
+    "replicate": 2,
+    "case_id": "Q6",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

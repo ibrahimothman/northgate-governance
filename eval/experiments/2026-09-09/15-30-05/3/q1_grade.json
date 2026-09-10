@@ -1,0 +1,171 @@
+{
+  "case_id": "Q1",
+  "question": "What is a patient?",
+  "passed": true,
+  "highest_failure_severity": null,
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 4,
+      "checks_total": 4
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    },
+    "citations": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "expected_tool",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "search_glossary",
+      "actual": "search_glossary",
+      "explanation": "Q1 should begin with search_glossary."
+    },
+    {
+      "name": "tool_arguments",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "term": "Patient",
+        "matching": "case_insensitive_exact"
+      },
+      "actual": {
+        "term": "patient"
+      },
+      "explanation": "Capitalization is ignored because the catalogue tool contract is case-insensitive exact."
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": "Redundant calls are an efficiency defect, not an outcome failure."
+    },
+    {
+      "name": "required_entities_retrieved",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": [
+        "patient-billing",
+        "patient-clinical",
+        "patient-research"
+      ],
+      "actual": [
+        "patient-billing",
+        "patient-clinical",
+        "patient-research"
+      ],
+      "explanation": ""
+    },
+    {
+      "name": "definition_count",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": 3,
+      "actual": 3,
+      "explanation": ""
+    },
+    {
+      "name": "contexts",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": [
+        "Clinical",
+        "Research",
+        "Revenue Cycle"
+      ],
+      "actual": [
+        "Clinical",
+        "Research",
+        "Revenue Cycle"
+      ],
+      "explanation": ""
+    },
+    {
+      "name": "catalogue_conflict_state",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all three canonical=false",
+      "actual": [
+        false,
+        false,
+        false
+      ],
+      "explanation": "The governed records themselves must preserve the unresolved conflict."
+    },
+    {
+      "name": "conflict_stated_in_answer",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "explicit statement that no canonical Patient definition exists",
+      "actual": "Northgate has no enterprise-wide canonical definition of **patient**. Three active definitions survive:\n\n- **Clinical:** An individual receiving or registered to receive clinical assessment, treatment, monitoring, or car",
+      "explanation": "This deterministic check catches omission of the central governance invariant. Subtle synthesis/preference behavior will be judged semantically later."
+    },
+    {
+      "name": "all_contexts_present_in_answer",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "Clinical": true,
+        "Research": true,
+        "Revenue Cycle": true
+      },
+      "actual": {
+        "Research": true,
+        "Revenue Cycle": true,
+        "Clinical": true
+      },
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://glossary/patient-billing",
+        "northgate://glossary/patient-clinical",
+        "northgate://glossary/patient-research"
+      ],
+      "actual": [
+        "northgate://glossary/patient-billing",
+        "northgate://glossary/patient-clinical",
+        "northgate://glossary/patient-research"
+      ],
+      "explanation": "Each governed Patient definition must be cited."
+    }
+  ],
+  "note": "Deterministic grader only. Semantic behaviors such as subtle definition synthesis, implicit preference, or external-knowledge leakage are intentionally deferred to an LLM judge."
+}

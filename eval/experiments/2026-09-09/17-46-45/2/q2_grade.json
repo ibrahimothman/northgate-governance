@@ -1,0 +1,130 @@
+{
+  "case_id": "Q2",
+  "question": "Who owns Legacy MRN?",
+  "passed": true,
+  "highest_failure_severity": null,
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    },
+    "citations": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "expected_tool",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "search_glossary",
+      "actual": "search_glossary",
+      "explanation": ""
+    },
+    {
+      "name": "tool_arguments",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "term": "Legacy MRN",
+        "matching": "case_insensitive_exact"
+      },
+      "actual": {
+        "term": "Legacy MRN"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "legacy_mrn_retrieved",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "legacy-mrn",
+      "actual": "legacy-mrn",
+      "explanation": ""
+    },
+    {
+      "name": "owner_is_null",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": null,
+      "actual": null,
+      "explanation": "A null owner is the governed ownership gap."
+    },
+    {
+      "name": "steward_matches",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "Health Information Management",
+      "actual": "Health Information Management",
+      "explanation": ""
+    },
+    {
+      "name": "ownership_gap_stated",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "explicitly state that the owner is unassigned",
+      "actual": "Legacy MRN’s owner is unassigned. Its steward is Health Information Management. (northgate://glossary/legacy-mrn)",
+      "explanation": ""
+    },
+    {
+      "name": "steward_mentioned",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "Health Information Management",
+      "actual": "Legacy MRN’s owner is unassigned. Its steward is Health Information Management. (northgate://glossary/legacy-mrn)",
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://glossary/legacy-mrn"
+      ],
+      "actual": [
+        "northgate://glossary/legacy-mrn"
+      ],
+      "explanation": ""
+    }
+  ],
+  "note": "Deterministic grader for ownership-gap handling. Semantic owner inference is judged later."
+}

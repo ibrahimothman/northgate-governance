@@ -1,0 +1,212 @@
+applications:
+- id: clinicaone-ehr-ngc
+  name: ClinicaOne EHR
+  business_name: Clinical Records System
+  site: NGC
+  application_type: clinical_records
+  description: Primary clinical record platform at Northgate Central Hospital, supporting acute-care documentation,
+    clinical orders and patient history. Includes an approved reporting function used to prepare de-identified
+    extracts for research.
+  owner: Chief Clinical Information Officer
+  steward: Clinical Applications Team
+  lifecycle_status: strategic
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-09-01'
+  entity_url: northgate://application/clinicaone-ehr-ngc
+- id: riverchart-clinical-riv
+  name: RiverChart Clinical
+  business_name: Clinical Records System
+  site: RIV
+  application_type: clinical_records
+  description: Riverside's long-standing clinical record system, retained after the merger while migration
+    to a future group clinical platform remains under consideration.
+  owner: Riverside Medical Director
+  steward: Clinical Applications Team
+  lifecycle_status: migrate
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-08-29'
+  entity_url: northgate://application/riverchart-clinical-riv
+- id: helixcare-record-sth
+  name: HelixCare Record
+  business_name: Clinical Records System
+  site: STH
+  application_type: clinical_records
+  description: Clinical record platform used by St. Helen's Specialist Hospital, with local configuration
+    supporting elective surgery and rehabilitation workflows.
+  owner: St. Helen's Medical Director
+  steward: Clinical Applications Team
+  lifecycle_status: migrate
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-08-30'
+  entity_url: northgate://application/helixcare-record-sth
+- id: medcore-pharmacy-ngc
+  name: MedCore Pharmacy
+  business_name: Pharmacy System
+  site: NGC
+  application_type: pharmacy
+  description: Pharmacy management platform at Northgate Central Hospital, supporting medication ordering,
+    dispensing and administration. Considered the preferred candidate for future group standardisation.
+  owner: Director of Pharmacy
+  steward: Pharmacy Digital Systems
+  lifecycle_status: strategic
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-09-01'
+  entity_url: northgate://application/medcore-pharmacy-ngc
+- id: rxbridge-riv
+  name: RxBridge
+  business_name: Pharmacy System
+  site: RIV
+  application_type: pharmacy
+  description: Riverside pharmacy platform supporting medication ordering, dispensing and administration.
+    Retained as a critical local system but carrying significant technology lifecycle risk.
+  owner: null
+  steward: Pharmacy Digital Systems
+  lifecycle_status: migrate
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-08-28'
+  entity_url: northgate://application/rxbridge-riv
+- id: pharmatrack-sth
+  name: PharmaTrack
+  business_name: Pharmacy System
+  site: STH
+  application_type: pharmacy
+  description: St. Helen's pharmacy management platform, tightly integrated with local specialist clinical
+    workflows and retained pending a group medication-platform decision.
+  owner: null
+  steward: Pharmacy Digital Systems
+  lifecycle_status: migrate
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-08-31'
+  entity_url: northgate://application/pharmatrack-sth
+- id: diagsphere-ngc
+  name: DiagSphere
+  business_name: Diagnostic System
+  site: NGC
+  application_type: diagnostics
+  description: Integrated diagnostic workflow platform supporting high-volume laboratory and imaging services
+    at Northgate Central Hospital.
+  owner: Director of Diagnostic Services
+  steward: Diagnostic Systems Team
+  lifecycle_status: strategic
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-09-01'
+  entity_url: northgate://application/diagsphere-ngc
+- id: riverlab-imaging-riv
+  name: RiverLab Imaging
+  business_name: Diagnostic System
+  site: RIV
+  application_type: diagnostics
+  description: Riverside diagnostic platform supporting laboratory and imaging workflows. Operationally
+    important but dependent on legacy technology scheduled for remediation.
+  owner: Riverside Diagnostics Director
+  steward: Diagnostic Systems Team
+  lifecycle_status: migrate
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-08-27'
+  entity_url: northgate://application/riverlab-imaging-riv
+- id: insightdx-sth
+  name: InsightDx
+  business_name: Diagnostic System
+  site: STH
+  application_type: diagnostics
+  description: Diagnostic workflow platform serving St. Helen's specialist services and supporting its
+    narrower laboratory and imaging needs.
+  owner: St. Helen's Diagnostics Lead
+  steward: Diagnostic Systems Team
+  lifecycle_status: tolerate
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-08-30'
+  entity_url: northgate://application/insightdx-sth
+- id: mynorthgate-portal
+  name: MyNorthgate Portal
+  business_name: Patient Portal
+  site: GROUP
+  application_type: patient_portal
+  description: Group-wide patient portal introduced after the merger to provide common digital access
+    to appointments, selected records and patient-facing services across all Northgate hospitals.
+  owner: Director of Digital Patient Services
+  steward: Digital Health Applications
+  lifecycle_status: strategic
+  merger_status: shared
+  source_registry: application_registry
+  last_verified: '2026-09-02'
+  entity_url: northgate://application/mynorthgate-portal
+- id: careschedule
+  name: CareSchedule
+  business_name: Appointment and Scheduling System
+  site: GROUP
+  application_type: scheduling
+  description: Group-wide appointment and scheduling platform introduced to replace separate site-level
+    scheduling tools and standardise patient booking processes.
+  owner: Director of Patient Access
+  steward: Patient Administration Systems
+  lifecycle_status: strategic
+  merger_status: shared
+  source_registry: application_registry
+  last_verified: '2026-09-02'
+  entity_url: northgate://application/careschedule
+- id: northgate-document-hub
+  name: Northgate Document Hub
+  business_name: Enterprise Document Management
+  site: GROUP
+  application_type: document_management
+  description: Consolidated enterprise document management platform replacing the three hospitals' legacy
+    document repositories and serving as the governed repository for long-retention clinical records.
+  owner: Director of Health Information Management
+  steward: Health Information Management
+  lifecycle_status: strategic
+  merger_status: consolidated
+  source_registry: application_registry
+  last_verified: '2026-09-02'
+  entity_url: northgate://application/northgate-document-hub
+- id: northgate-revenuecare
+  name: Northgate RevenueCare
+  business_name: Billing and Claims System
+  site: GROUP
+  application_type: billing_claims
+  description: Shared billing and claims platform supporting charges, payer processing and revenue-cycle
+    operations across the merged group.
+  owner: Director of Revenue Cycle
+  steward: Revenue Cycle Systems
+  lifecycle_status: strategic
+  merger_status: shared
+  source_registry: application_registry
+  last_verified: '2026-09-01'
+  entity_url: northgate://application/northgate-revenuecare
+- id: connecthub-integration
+  name: ConnectHub Integration Platform
+  business_name: Integration Platform
+  site: GROUP
+  application_type: integration
+  description: Enterprise integration platform connecting site-specific clinical systems with shared Northgate
+    services including scheduling, billing, document management and patient-facing applications.
+  owner: Head of Integration Platforms
+  steward: Integration Engineering
+  lifecycle_status: strategic
+  merger_status: shared
+  source_registry: application_registry
+  last_verified: '2026-09-01'
+  entity_url: northgate://application/connecthub-integration
+- id: rehabflow-sth
+  name: RehabFlow
+  business_name: Rehabilitation System
+  site: STH
+  application_type: rehabilitation
+  description: Specialist rehabilitation workflow system used only at St. Helen's. Retained because it
+    supports rehabilitation processes not provided by the group's general clinical applications.
+  owner: Director of Rehabilitation Services
+  steward: Specialist Clinical Systems
+  lifecycle_status: tolerate
+  merger_status: site_specific
+  source_registry: application_registry
+  last_verified: '2026-08-26'
+  entity_url: northgate://application/rehabflow-sth

@@ -1,0 +1,90 @@
+datasets:
+- id: patient-master-data
+  name: Patient Master Data
+  description: Core patient identity and demographic information used to identify individuals consistently
+    across Northgate Health Group.
+  classification: RESTRICTED
+  steward: Health Information Management
+  retention: Retained in accordance with the lifecycle of the associated patient record.
+  contains_personal_data: true
+  contains_health_data: true
+  legal_basis: provision_of_healthcare
+  entity_url: northgate://dataset/patient-master-data
+- id: inpatient-clinical-record
+  name: Inpatient Clinical Record
+  description: Governed clinical record for inpatient care, including clinical documentation and other
+    information retained as part of the patient's inpatient record.
+  classification: RESTRICTED
+  steward: Health Information Management
+  retention: 30 years from date of last attendance
+  contains_personal_data: true
+  contains_health_data: true
+  legal_basis: provision_of_healthcare
+  entity_url: northgate://dataset/inpatient-clinical-record
+- id: medication-orders-administration
+  name: Medication Orders & Administration
+  description: Medication prescribing, dispensing and administration information recorded during delivery
+    of patient care.
+  classification: RESTRICTED
+  steward: Pharmacy Services
+  retention: Retained as part of the governed patient medication record.
+  contains_personal_data: true
+  contains_health_data: true
+  legal_basis: provision_of_healthcare
+  entity_url: northgate://dataset/medication-orders-administration
+- id: diagnostic-orders-results
+  name: Diagnostic Orders & Results
+  description: Laboratory, imaging and other diagnostic requests together with associated findings and
+    results.
+  classification: RESTRICTED
+  steward: Diagnostic Services
+  retention: Retained as part of the governed patient diagnostic record.
+  contains_personal_data: true
+  contains_health_data: true
+  legal_basis: provision_of_healthcare
+  entity_url: northgate://dataset/diagnostic-orders-results
+- id: appointments-encounters
+  name: Appointments & Encounters
+  description: Operational records describing patient appointments, admissions, visits and other scheduled
+    or recorded care interactions.
+  classification: CONFIDENTIAL
+  steward: Patient Administration
+  retention: Retained according to the operational patient administration retention schedule.
+  contains_personal_data: true
+  contains_health_data: false
+  legal_basis: provision_of_healthcare
+  entity_url: northgate://dataset/appointments-encounters
+- id: billing-claims
+  name: Billing & Claims
+  description: Charges, account references, payer information, claim submissions and reimbursement-processing
+    records.
+  classification: CONFIDENTIAL
+  steward: Revenue Cycle Management
+  retention: Retained according to the financial and claims records schedule.
+  contains_personal_data: true
+  contains_health_data: false
+  legal_basis: healthcare_financial_administration
+  entity_url: northgate://dataset/billing-claims
+- id: research-extracts
+  name: Research Extracts
+  description: Curated and de-identified extracts prepared from approved Northgate information for authorised
+    research activity.
+  classification: INTERNAL
+  steward: Research Governance
+  retention: Retained for the duration of the approved research purpose and disposed of according to the
+    applicable research protocol.
+  contains_personal_data: false
+  contains_health_data: true
+  legal_basis: approved_research
+  entity_url: northgate://dataset/research-extracts
+- id: published-activity-statistics
+  name: Published Activity Statistics
+  description: Aggregated, non-identifiable statistics describing Northgate service activity and operational
+    performance for external use.
+  classification: PUBLIC
+  steward: Corporate Performance
+  retention: permanent
+  contains_personal_data: false
+  contains_health_data: false
+  legal_basis: public_reporting
+  entity_url: northgate://dataset/published-activity-statistics

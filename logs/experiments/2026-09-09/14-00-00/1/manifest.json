@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-09",
+  "replicate": 1,
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "benchmark_as_of": "2026-09-08",
+  "cases": [
+    {
+      "id": "Q1",
+      "status": "completed",
+      "file": "q1_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q2",
+      "status": "completed",
+      "file": "q2_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q3",
+      "status": "completed",
+      "file": "q3_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q4",
+      "status": "completed",
+      "file": "q4_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q5",
+      "status": "completed",
+      "file": "q5_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q6",
+      "status": "completed",
+      "file": "q6_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q7",
+      "status": "completed",
+      "file": "q7_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q8",
+      "status": "completed",
+      "file": "q8_real_run.json",
+      "error": null
+    }
+  ]
+}

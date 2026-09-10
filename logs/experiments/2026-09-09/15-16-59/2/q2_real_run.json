@@ -1,0 +1,64 @@
+{
+  "timestamp_utc": "2026-09-09T11:17:20.696914+00:00",
+  "question": "Who owns Legacy MRN?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_05fca2261f802f8d006aa1403c143087d2a1741579a103b8e4",
+    "resp_05fca2261f802f8d006aa1403e698c87d29002ca435b13d0d4"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "search_glossary",
+      "arguments": {
+        "term": "Legacy MRN"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "query": "Legacy MRN",
+        "match_type": "exact",
+        "results": [
+          {
+            "entity_type": "glossary",
+            "alias_of": null,
+            "canonical": false,
+            "context": "Health Information Management",
+            "definition": "A patient identifier originating from a pre-merger hospital record system and retained for historical lookup and reconciliation.",
+            "entity_url": "northgate://glossary/legacy-mrn",
+            "governance_note": "Formal ownership has not been reassigned since the records manager responsible for the term left during merger integration.",
+            "id": "legacy-mrn",
+            "owner": null,
+            "replaced_by": null,
+            "status": "active",
+            "steward": "Health Information Management",
+            "synonyms": [],
+            "term": "Legacy MRN"
+          }
+        ]
+      },
+      "call_id": "call_G2x8FEjuxXx0yPvbC8YMPMaj"
+    }
+  ],
+  "final_answer": "Legacy MRN’s owner is **unassigned**. Its steward and escalation route is **Health Information Management**. (northgate://glossary/legacy-mrn)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://glossary/legacy-mrn"
+    ],
+    "cited_urls": [
+      "northgate://glossary/legacy-mrn"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q2",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "15-16-59",
+    "replicate": 2,
+    "case_id": "Q2",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

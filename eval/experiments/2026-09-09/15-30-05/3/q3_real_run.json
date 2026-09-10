@@ -1,0 +1,71 @@
+{
+  "timestamp_utc": "2026-09-09T11:32:53.266063+00:00",
+  "question": "What does Inpatient Day Case mean?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_01768e16d1bbd82a006aa143e0188087d2965cb40a55b5bdd8",
+    "resp_01768e16d1bbd82a006aa143e1e80c87d288f35a9c2dd4c041"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "search_glossary",
+      "arguments": {
+        "term": "Inpatient Day Case"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "query": "Inpatient Day Case",
+        "match_type": "exact",
+        "results": [
+          {
+            "entity_type": "glossary",
+            "alias_of": null,
+            "canonical": false,
+            "context": "Clinical Administration",
+            "definition": "Historical term for a planned hospital treatment completed without an overnight stay.",
+            "entity_url": "northgate://glossary/inpatient-day-case",
+            "governance_note": "Deprecated after terminology harmonisation but still used verbally in parts of the merged organisation.",
+            "id": "inpatient-day-case",
+            "owner": "Director of Patient Access",
+            "replaced_by": "day-procedure",
+            "status": "deprecated",
+            "steward": "Patient Administration",
+            "synonyms": [],
+            "term": "Inpatient Day Case",
+            "replacement": {
+              "identifier": "day-procedure",
+              "name": "Day Procedure",
+              "status": "active",
+              "entity_url": "northgate://glossary/day-procedure"
+            }
+          }
+        ]
+      },
+      "call_id": "call_2kHDN6X1zekX168nXmDQtCdA"
+    }
+  ],
+  "final_answer": "**Inpatient Day Case** is a historical term for planned hospital treatment completed without an overnight stay. It is deprecated and replaced by **Day Procedure**. (northgate://glossary/inpatient-day-case)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://glossary/day-procedure",
+      "northgate://glossary/inpatient-day-case"
+    ],
+    "cited_urls": [
+      "northgate://glossary/inpatient-day-case"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q3",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "15-30-05",
+    "replicate": 3,
+    "case_id": "Q3",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

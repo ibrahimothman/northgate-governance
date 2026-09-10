@@ -1,0 +1,101 @@
+{
+  "timestamp_utc": "2026-09-09T11:32:26.691571+00:00",
+  "question": "How complete is our application data?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_0002dd1547acfb43006aa143c4529087d2ab6edcc76e879a85",
+    "resp_0002dd1547acfb43006aa143c7b84c87d28aef3d9bbab385fc"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_registry_health",
+      "arguments": {
+        "registry": "application",
+        "as_of": "2026-09-08"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "registry": {
+          "id": "application_registry",
+          "name": "Application Registry",
+          "steward": "Enterprise Architecture",
+          "classification": "INTERNAL",
+          "source_systems": [
+            "Architecture Repository",
+            "Application Owner Attestations"
+          ],
+          "refresh_cadence": "monthly",
+          "last_refreshed": "2026-09-01",
+          "entity_url": "northgate://registry/application-registry"
+        },
+        "as_of": "2026-09-08",
+        "rules": [
+          {
+            "id": "application-owner-completeness",
+            "metric": "field_completeness",
+            "operator": "greater_than_or_equal",
+            "threshold": 0.95,
+            "actual": 0.8666666666666667,
+            "passed": false,
+            "status": "fail",
+            "evidence": [
+              {
+                "identifier": "pharmatrack-sth",
+                "name": "PharmaTrack"
+              },
+              {
+                "identifier": "rxbridge-riv",
+                "name": "RxBridge"
+              }
+            ]
+          },
+          {
+            "id": "application-site-completeness",
+            "metric": "field_completeness",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "business-application-capability-coverage",
+            "metric": "relationship_coverage",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          }
+        ],
+        "overall_status": "fail"
+      },
+      "call_id": "call_9Od98TSLQMnIh61N1lYbzwCn"
+    }
+  ],
+  "final_answer": "Application data quality **fails overall**. Owner completeness is **86.7%**, below the **95% threshold**; PharmaTrack and RxBridge lack owners. Site completeness and capability coverage are both **100%**. (northgate://registry/application-registry)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://registry/application-registry"
+    ],
+    "cited_urls": [
+      "northgate://registry/application-registry"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q8",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "15-30-05",
+    "replicate": 2,
+    "case_id": "Q8",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

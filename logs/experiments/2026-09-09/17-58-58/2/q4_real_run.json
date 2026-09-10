@@ -1,0 +1,72 @@
+{
+  "timestamp_utc": "2026-09-09T14:00:38.688357+00:00",
+  "question": "What is an encounter?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_04cf05729580746d006aa166824df087d19361d50bab349134",
+    "resp_04cf05729580746d006aa16684689887d183a013c5dc5dfaef"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "search_glossary",
+      "arguments": {
+        "term": "encounter"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "query": "encounter",
+        "match_type": "exact",
+        "results": [
+          {
+            "entity_type": "glossary",
+            "alias_of": "episode-of-care",
+            "canonical": false,
+            "context": "Clinical",
+            "definition": null,
+            "entity_url": "northgate://glossary/encounter",
+            "governance_note": "Retained as a searchable alias for the canonical term Episode of Care.",
+            "id": "encounter",
+            "owner": "Chief Medical Officer",
+            "replaced_by": null,
+            "status": "alias",
+            "steward": "Clinical Governance",
+            "synonyms": [],
+            "term": "Encounter",
+            "canonical_term": {
+              "identifier": "episode-of-care",
+              "name": "Episode of Care",
+              "definition": "A bounded period of healthcare activity relating to a particular clinical need, condition or course of treatment.",
+              "status": "active",
+              "entity_url": "northgate://glossary/episode-of-care"
+            }
+          }
+        ]
+      },
+      "call_id": "call_z2j7QCFOA34u5tKFQGRtZQrx"
+    }
+  ],
+  "final_answer": "“Encounter” is an alias for the canonical term **Episode of Care**: a bounded period of healthcare activity relating to a particular clinical need, condition, or course of treatment. (northgate://glossary/episode-of-care)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://glossary/encounter",
+      "northgate://glossary/episode-of-care"
+    ],
+    "cited_urls": [
+      "northgate://glossary/episode-of-care"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q4",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "17-58-58",
+    "replicate": 2,
+    "case_id": "Q4",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

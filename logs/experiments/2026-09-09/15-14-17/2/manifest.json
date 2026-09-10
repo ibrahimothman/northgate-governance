@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-09",
+  "experiment_id": "15-14-17",
+  "replicate": 2,
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "benchmark_as_of": "2026-09-08",
+  "cases": [
+    {
+      "id": "Q2",
+      "status": "completed",
+      "file": "q2_real_run.json",
+      "error": null
+    },
+    {
+      "id": "Q6",
+      "status": "completed",
+      "file": "q6_real_run.json",
+      "error": null
+    }
+  ]
+}

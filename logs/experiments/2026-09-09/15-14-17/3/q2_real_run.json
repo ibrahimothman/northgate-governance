@@ -1,0 +1,78 @@
+{
+  "timestamp_utc": "2026-09-09T11:15:04.085143+00:00",
+  "question": "Who owns Legacy MRN?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_010aefca02705b27006aa13fac6f5887d29a3b030d2a1916ee",
+    "resp_010aefca02705b27006aa13fb1645c87d2b92d77b7d2156d34",
+    "resp_010aefca02705b27006aa13fb5a2fc87d29dc249dbd519e1d0"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_entity",
+      "arguments": {
+        "entity_type": "application",
+        "identifier": "Legacy MRN"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found"
+      },
+      "call_id": "call_TfSQ1hjkMxTZlKh6tkV3ofr8"
+    },
+    {
+      "sequence": 2,
+      "name": "search_glossary",
+      "arguments": {
+        "term": "Legacy MRN"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "query": "Legacy MRN",
+        "match_type": "exact",
+        "results": [
+          {
+            "entity_type": "glossary",
+            "alias_of": null,
+            "canonical": false,
+            "context": "Health Information Management",
+            "definition": "A patient identifier originating from a pre-merger hospital record system and retained for historical lookup and reconciliation.",
+            "entity_url": "northgate://glossary/legacy-mrn",
+            "governance_note": "Formal ownership has not been reassigned since the records manager responsible for the term left during merger integration.",
+            "id": "legacy-mrn",
+            "owner": null,
+            "replaced_by": null,
+            "status": "active",
+            "steward": "Health Information Management",
+            "synonyms": [],
+            "term": "Legacy MRN"
+          }
+        ]
+      },
+      "call_id": "call_vjlSSeDkaPaFmcLt6YiG5Fm9"
+    }
+  ],
+  "final_answer": "Legacy MRN’s owner is **unassigned**. The steward is **Health Information Management**. (northgate://glossary/legacy-mrn)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://glossary/legacy-mrn"
+    ],
+    "cited_urls": [
+      "northgate://glossary/legacy-mrn"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q2",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "15-14-17",
+    "replicate": 3,
+    "case_id": "Q2",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

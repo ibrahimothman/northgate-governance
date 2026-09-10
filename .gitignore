@@ -2,16 +2,10 @@ __pycache__/
 .pytest_cache/
 *.py[cod]
 .venv/
-.runtime/
-docker/
-domain/
-governance_registry/
-northgate_governance_hub.egg-info/
-schemas/
-scripts/
 tests/
-docs/openmetadata-mapping.md
-docs/runbook.md
-SESSION_SKELETON.md
-sessions/
+.env
+.cursor/
+frontend/node_modules/
+frontend/.next/
+frontend/*.tsbuildinfo
 

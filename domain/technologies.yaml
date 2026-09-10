@@ -1,0 +1,169 @@
+technologies:
+- id: windows-server-2019
+  name: Windows Server 2019
+  product: Windows Server
+  version: '2019'
+  technology_type: operating_system
+  vendor: Microsoft
+  support_phase: security_support
+  support_end_date: '2029-01-09'
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: windows-server
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/windows-server-2019
+- id: windows-server-2022
+  name: Windows Server 2022
+  product: Windows Server
+  version: '2022'
+  technology_type: operating_system
+  vendor: Microsoft
+  support_phase: active_support
+  support_end_date: '2031-10-14'
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: windows-server
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/windows-server-2022
+- id: rhel-8
+  name: Red Hat Enterprise Linux 8
+  product: Red Hat Enterprise Linux
+  version: '8'
+  technology_type: operating_system
+  vendor: Red Hat
+  support_phase: maintenance_support
+  support_end_date: '2029-05-31'
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: rhel
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/rhel-8
+- id: rhel-9
+  name: Red Hat Enterprise Linux 9
+  product: Red Hat Enterprise Linux
+  version: '9'
+  technology_type: operating_system
+  vendor: Red Hat
+  support_phase: full_support
+  support_end_date: '2032-05-31'
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: rhel
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/rhel-9
+- id: postgresql-11
+  name: PostgreSQL 11
+  product: PostgreSQL
+  version: '11'
+  technology_type: database
+  vendor: PostgreSQL Global Development Group
+  support_phase: ended
+  support_end_date: '2023-11-09'
+  lifecycle_status: end_of_life
+  lifecycle_source: endoflife.date
+  source_product: postgresql
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/postgresql-11
+- id: postgresql-15
+  name: PostgreSQL 15
+  product: PostgreSQL
+  version: '15'
+  technology_type: database
+  vendor: PostgreSQL Global Development Group
+  support_phase: supported
+  support_end_date: '2027-11-11'
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: postgresql
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/postgresql-15
+- id: postgresql-16
+  name: PostgreSQL 16
+  product: PostgreSQL
+  version: '16'
+  technology_type: database
+  vendor: PostgreSQL Global Development Group
+  support_phase: supported
+  support_end_date: '2028-11-09'
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: postgresql
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/postgresql-16
+- id: mysql-5-7
+  name: MySQL 5.7
+  product: MySQL
+  version: '5.7'
+  technology_type: database
+  vendor: Oracle
+  support_phase: ended
+  support_end_date: '2023-10-31'
+  lifecycle_status: end_of_life
+  lifecycle_source: endoflife.date
+  source_product: mysql
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/mysql-5-7
+- id: tomcat-8-5
+  name: Apache Tomcat 8.5
+  product: Apache Tomcat
+  version: '8.5'
+  technology_type: application_runtime
+  vendor: Apache Software Foundation
+  support_phase: ended
+  support_end_date: '2024-03-31'
+  lifecycle_status: end_of_life
+  lifecycle_source: endoflife.date
+  source_product: tomcat
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/tomcat-8-5
+- id: tomcat-10-1
+  name: Apache Tomcat 10.1
+  product: Apache Tomcat
+  version: '10.1'
+  technology_type: application_runtime
+  vendor: Apache Software Foundation
+  support_phase: security_support
+  support_end_date: null
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: tomcat
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/tomcat-10-1
+- id: nodejs-18
+  name: Node.js 18
+  product: Node.js
+  version: '18'
+  technology_type: application_runtime
+  vendor: OpenJS Foundation
+  support_phase: ended
+  support_end_date: '2025-04-30'
+  lifecycle_status: end_of_life
+  lifecycle_source: endoflife.date
+  source_product: nodejs
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/nodejs-18
+- id: nodejs-22
+  name: Node.js 22
+  product: Node.js
+  version: '22'
+  technology_type: application_runtime
+  vendor: OpenJS Foundation
+  support_phase: security_support
+  support_end_date: '2027-04-30'
+  lifecycle_status: supported
+  lifecycle_source: endoflife.date
+  source_product: nodejs
+  last_verified: '2026-08-05'
+  source_registry: technology_registry
+  entity_url: northgate://technology/nodejs-22

@@ -1,0 +1,267 @@
+{
+  "case_id": "Q7",
+  "question": "Which applications duplicate each other across sites for Medication Management?",
+  "passed": true,
+  "highest_failure_severity": null,
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 5,
+      "checks_total": 5
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 8,
+      "checks_total": 8
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "citations": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "required_call:fetch_capability",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_entity",
+        "arguments": {
+          "entity_type": "capability",
+          "identifier": "Medication Management"
+        }
+      },
+      "actual": {
+        "entity_type": "capability",
+        "identifier": "Medication Management"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "required_call:capability_walk",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "traverse",
+        "arguments": {
+          "from_entity": "Medication Management",
+          "relationship_type": "application → capability",
+          "depth": 1
+        }
+      },
+      "actual": {
+        "depth": 1,
+        "from_entity": "medication-management",
+        "relationship_type": "application → capability"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "required_call:capability_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_registry_health",
+        "arguments": {
+          "registry": "capability",
+          "as_of": "2026-09-08"
+        }
+      },
+      "actual": {
+        "registry": "capability_registry",
+        "as_of": "2026-09-08"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "required_call:application_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_registry_health",
+        "arguments": {
+          "registry": "application",
+          "as_of": "2026-09-08"
+        }
+      },
+      "actual": {
+        "registry": "application_registry",
+        "as_of": "2026-09-08"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "ordering:fetch_capability_before_capability_walk",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "fetch_capability before capability_walk",
+      "actual": {
+        "fetch_capability": 0,
+        "capability_walk": 1
+      },
+      "explanation": ""
+    },
+    {
+      "name": "ordering:fetch_capability_before_capability_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "fetch_capability before capability_health",
+      "actual": {
+        "fetch_capability": 0,
+        "capability_health": 2
+      },
+      "explanation": ""
+    },
+    {
+      "name": "ordering:capability_walk_before_application_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "capability_walk before application_health",
+      "actual": {
+        "capability_walk": 1,
+        "application_health": 3
+      },
+      "explanation": ""
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "capability_retrieved",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "capability_registry_checked",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "explanation": ""
+    },
+    {
+      "name": "exact_duplication_set",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": [
+        "medcore-pharmacy-ngc",
+        "pharmatrack-sth",
+        "rxbridge-riv"
+      ],
+      "actual": [
+        "medcore-pharmacy-ngc",
+        "pharmatrack-sth",
+        "rxbridge-riv"
+      ],
+      "explanation": ""
+    },
+    {
+      "name": "all_three_sites",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": [
+        "NGC",
+        "RIV",
+        "STH"
+      ],
+      "actual": [
+        "NGC",
+        "RIV",
+        "STH"
+      ],
+      "explanation": ""
+    },
+    {
+      "name": "application_owner_rule",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "all_applications_named",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "all_sites_named",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "owner_completeness_caveat_stated",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://application/medcore-pharmacy-ngc",
+        "northgate://application/pharmatrack-sth",
+        "northgate://application/rxbridge-riv",
+        "northgate://registry/application-registry"
+      ],
+      "actual": [
+        "northgate://application/medcore-pharmacy-ngc",
+        "northgate://application/pharmatrack-sth",
+        "northgate://application/rxbridge-riv",
+        "northgate://capability/medication-management",
+        "northgate://registry/application-registry"
+      ],
+      "explanation": ""
+    }
+  ],
+  "note": "Site duplication plus mandatory capability/application registry health propagation."
+}

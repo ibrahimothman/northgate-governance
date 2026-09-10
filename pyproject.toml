@@ -8,8 +8,12 @@ version = "0.1.0"
 description = "Governed enterprise-architecture registries for a synthetic healthcare organisation"
 requires-python = ">=3.9"
 dependencies = [
+  "fastapi>=0.115,<1",
   "PyYAML>=6.0,<7",
   "jsonschema>=4.16,<5",
+  "openai>=1.40,<3",
+  "python-dotenv>=1.0,<2",
+  "uvicorn[standard]>=0.34,<1",
 ]
 
 [project.optional-dependencies]

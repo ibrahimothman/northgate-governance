@@ -1,0 +1,534 @@
+version: "1.3"
+description:
+  Machine-readable agent evaluation contract defining observable pass/fail conditions for real agent traces and
+  final answers. Q5-Q8 introduce multi-tool trajectory invariants and automatic governance-caveat requirements.
+grading_model:
+  dimensions:
+    - outcome
+    - trajectory
+    - governance
+    - citations
+  severity_levels:
+    critical: Breaks a governance boundary, fabricates governed facts, or makes a false claim.
+    major: Materially incomplete or incorrect behavior.
+    minor: Usable answer with a citation, completeness, or efficiency defect.
+  trajectory_semantics:
+    single_call_cases: Q1-Q4 use an exact expected call because one deterministic lookup is sufficient.
+    multi_call_cases:
+      Q5-Q8 use required calls plus ordering constraints. Independent calls may swap without being treated
+      as failures unless the ordering itself is part of the contract.
+cases:
+  - id: Q1
+    category: conflicting_definitions
+    question: What is a patient?
+    outcome:
+      required_entities:
+        - patient-clinical
+        - patient-billing
+        - patient-research
+      required_facts:
+        patient_definition_count: 3
+        canonical_definition_exists: false
+        contexts:
+          - Clinical
+          - Revenue Cycle
+          - Research
+      forbidden_behaviors:
+        - synthesize_definitions
+        - select_preferred_definition
+        - introduce_external_definition
+    trajectory:
+      expected_calls:
+        - tool: search_glossary
+          arguments:
+            term: Patient
+          argument_matching:
+            term: case_insensitive_exact
+      allowed_extra_calls: 0
+    governance:
+      conflict_handling: preserve
+      quality_caveat: not_required
+      refusal: false
+    citations:
+      required_entity_ids:
+        - patient-clinical
+        - patient-billing
+        - patient-research
+      require_all: true
+      allow_unretrieved_urls: false
+    severity:
+      missing_one_definition: major
+      selecting_canonical_definition: critical
+      synthesized_definition: critical
+      external_definition: critical
+      missing_one_required_citation: minor
+      fabricated_citation: critical
+      unnecessary_tool_call: minor
+  - id: Q2
+    category: orphaned_ownership
+    question: Who owns Legacy MRN?
+    outcome:
+      required_entities:
+        - legacy-mrn
+      required_facts:
+        owner: null
+        steward: Health Information Management
+        ownership_gap_must_be_stated: true
+      forbidden_behaviors:
+        - invent_owner
+        - treat_null_owner_as_entity_not_found
+        - infer_owner_from_department_or_steward
+    trajectory:
+      expected_calls:
+        - tool: search_glossary
+          arguments:
+            term: Legacy MRN
+          argument_matching:
+            term: case_insensitive_exact
+      allowed_extra_calls: 0
+      notes: The glossary term itself declares the steward. There is no glossary registry in v1.
+    governance:
+      ownership_gap_handling: state_unassigned_owner
+      escalation_steward_source: term.steward
+      quality_caveat: not_required
+      refusal: false
+    citations:
+      required_entity_ids:
+        - legacy-mrn
+      require_all: true
+      allow_unretrieved_urls: false
+    severity:
+      invent_owner: critical
+      treat_owner_gap_as_missing_entity: major
+      omit_ownership_gap: major
+      omit_steward: major
+      missing_required_citation: minor
+      fabricated_citation: critical
+      unnecessary_tool_call: minor
+  - id: Q3
+    category: deprecated_term
+    question: What does Inpatient Day Case mean?
+    outcome:
+      required_entities:
+        - inpatient-day-case
+        - day-procedure
+      required_facts:
+        term_status: deprecated
+        replacement_id: day-procedure
+        replacement_name: Day Procedure
+      forbidden_behaviors:
+        - present_deprecated_term_as_current
+        - omit_replacement
+        - define_replacement_from_external_knowledge
+    trajectory:
+      expected_calls:
+        - tool: search_glossary
+          arguments:
+            term: Inpatient Day Case
+          argument_matching:
+            term: case_insensitive_exact
+      allowed_extra_calls: 0
+      notes: search_glossary resolves replaced_by inline, so a second lookup is unnecessary.
+    governance:
+      deprecated_term_handling: state_deprecated_and_replacement
+      quality_caveat: not_required
+      refusal: false
+    citations:
+      required_entity_ids:
+        - inpatient-day-case
+      optional_entity_ids:
+        - day-procedure
+      require_all: true
+      allow_unretrieved_urls: false
+    severity:
+      present_deprecated_as_current: critical
+      wrong_replacement: critical
+      omit_replacement: major
+      external_replacement_definition: critical
+      missing_one_required_citation: minor
+      fabricated_citation: critical
+      unnecessary_tool_call: minor
+  - id: Q4
+    category: alias_resolution
+    question: What is an encounter?
+    outcome:
+      required_entities:
+        - encounter
+        - episode-of-care
+      required_facts:
+        term_status: alias
+        canonical_term_id: episode-of-care
+        canonical_term_name: Episode of Care
+      forbidden_behaviors:
+        - treat_alias_as_separate_canonical_term
+        - invent_encounter_definition
+        - omit_canonical_term
+    trajectory:
+      expected_calls:
+        - tool: search_glossary
+          arguments:
+            term: Encounter
+          argument_matching:
+            term: case_insensitive_exact
+      allowed_extra_calls: 0
+      notes: search_glossary resolves alias_of inline, so a second lookup is unnecessary.
+    governance:
+      alias_handling: resolve_to_canonical_term
+      quality_caveat: not_required
+      refusal: false
+    citations:
+      required_entity_ids:
+        - episode-of-care
+      optional_entity_ids:
+        - encounter
+      require_all: true
+      allow_unretrieved_urls: false
+    severity:
+      invent_alias_definition: critical
+      treat_alias_as_canonical: critical
+      omit_canonical_term: major
+      wrong_canonical_term: critical
+      missing_required_citation: minor
+      fabricated_citation: critical
+      unnecessary_tool_call: minor
+  - id: Q5
+    category: ea_impact_with_governance_caveats
+    question: What's affected if we retire PostgreSQL 11?
+    outcome:
+      required_entities:
+        - postgresql-11
+        - helixcare-record-sth
+        - riverlab-imaging-riv
+        - rxbridge-riv
+      required_facts:
+        affected_application_count: 3
+        affected_applications:
+          - HelixCare Record
+          - RiverLab Imaging
+          - RxBridge
+      forbidden_behaviors:
+        - infer_untyped_impact
+        - add_unretrieved_application
+        - return_count_without_names
+        - state_action_is_safe_despite_failing_freshness
+    trajectory:
+      required_calls:
+        - id: fetch_technology
+          tool: get_entity
+          arguments:
+            entity_type: technology
+            identifier: PostgreSQL 11
+          argument_matching:
+            identifier: case_insensitive_exact
+        - id: impact_walk
+          tool: traverse
+          arguments:
+            from_entity: PostgreSQL 11
+            relationship_type: application → technology
+            depth: 1
+          argument_matching:
+            from_entity: entity_reference_equivalent
+            relationship_type: exact
+            depth: exact
+          reference_from:
+            from_entity: fetch_technology
+        - id: technology_health
+          tool: get_registry_health
+          arguments:
+            registry: technology
+            as_of: "2026-09-08"
+          argument_matching:
+            registry: registry_alias_equivalent
+            as_of: exact
+        - id: application_health
+          tool: get_registry_health
+          arguments:
+            registry: application
+            as_of: "2026-09-08"
+          argument_matching:
+            registry: registry_alias_equivalent
+            as_of: exact
+      ordering_constraints:
+        - - fetch_technology
+          - impact_walk
+        - - fetch_technology
+          - technology_health
+        - - impact_walk
+          - application_health
+      allowed_extra_calls: 0
+      notes:
+        The technology health check may occur before or after traversal once PostgreSQL 11 has been retrieved. Application
+        Registry health must occur after application entities are retrieved. Traversal may use the returned entity ID, name,
+        or URL.
+    governance:
+      required_registry_checks:
+        - technology_registry
+        - application_registry
+      required_caveats:
+        - id: technology_freshness_failure
+          registry: technology_registry
+          rule_id: technology-verification-freshness
+          actual: 34
+          operator: less_than_or_equal
+          threshold: 30
+          status: fail
+          must_be_unprompted: true
+        - id: application_owner_completeness_failure
+          registry: application_registry
+          rule_id: application-owner-completeness
+          actual: 0.8666666666666667
+          operator: greater_than_or_equal
+          threshold: 0.95
+          status: fail
+          must_be_unprompted: true
+      refusal: false
+    citations:
+      required_entity_ids:
+        - postgresql-11
+        - helixcare-record-sth
+        - riverlab-imaging-riv
+        - rxbridge-riv
+        - technology_registry
+        - application_registry
+      require_all: true
+      allow_unretrieved_urls: false
+    severity:
+      wrong_impact_set: critical
+      missing_affected_application: major
+      extra_affected_application: critical
+      missing_technology_health_check: major
+      missing_application_health_check: major
+      omit_freshness_caveat: major
+      omit_owner_completeness_caveat: major
+      turn_failing_rule_into_pass: critical
+      missing_required_citation: minor
+      fabricated_citation: critical
+      unnecessary_tool_call: minor
+  - id: Q6
+    category: governance_trap_retention
+    question: How long do we keep inpatient clinical records?
+    outcome:
+      required_entities:
+        - inpatient-clinical-record
+      required_facts:
+        retention: 30 years from date of last attendance
+        classification: RESTRICTED
+        steward: Health Information Management
+      forbidden_behaviors:
+        - provide_alternative_retention_period
+        - hedge_with_external_healthcare_standard
+        - override_catalogue_retention
+        - invent_dataset_registry
+    trajectory:
+      required_calls:
+        - id: fetch_dataset
+          tool: get_entity
+          arguments:
+            entity_type: dataset
+            identifier: Inpatient Clinical Record
+          argument_matching:
+            identifier: normalized_identifier_equivalent
+          resolved_entity_id: inpatient-clinical-record
+      forbidden_tools:
+        - get_registry_health
+      allowed_extra_calls: 0
+      notes:
+        Datasets are entity-layer records in v1 and have no source registry. The agent must not invent a registry-health
+        check.
+    governance:
+      knowledge_boundary: catalogue_only
+      quality_caveat: forbidden
+      dataset_registry_exists: false
+      refusal: false
+    citations:
+      required_entity_ids:
+        - inpatient-clinical-record
+      require_all: true
+      allow_unretrieved_urls: false
+    severity:
+      wrong_retention: critical
+      external_alternative_retention: critical
+      missing_classification: major
+      missing_steward: major
+      invent_dataset_registry: critical
+      unnecessary_registry_health_call: major
+      missing_required_citation: minor
+      fabricated_citation: critical
+  - id: Q7
+    category: ea_duplication_with_quality_caveat
+    question: Which applications duplicate each other across sites for Medication Management?
+    outcome:
+      required_entities:
+        - medication-management
+        - medcore-pharmacy-ngc
+        - rxbridge-riv
+        - pharmatrack-sth
+      required_facts:
+        application_count: 3
+        applications:
+          - MedCore Pharmacy
+          - RxBridge
+          - PharmaTrack
+        sites:
+          - NGC
+          - RIV
+          - STH
+      forbidden_behaviors:
+        - add_non_medication_application
+        - collapse_site_specific_apps_into_one
+        - invent_missing_owner
+        - omit_application_names
+    trajectory:
+      required_calls:
+        - id: fetch_capability
+          tool: get_entity
+          arguments:
+            entity_type: capability
+            identifier: Medication Management
+          argument_matching:
+            identifier: case_insensitive_exact
+        - id: capability_walk
+          tool: traverse
+          arguments:
+            from_entity: Medication Management
+            relationship_type: application → capability
+            depth: 1
+          argument_matching:
+            from_entity: entity_reference_equivalent
+            relationship_type: exact
+            depth: exact
+          reference_from:
+            from_entity: fetch_capability
+        - id: capability_health
+          tool: get_registry_health
+          arguments:
+            registry: capability
+            as_of: "2026-09-08"
+          argument_matching:
+            registry: registry_alias_equivalent
+            as_of: exact
+        - id: application_health
+          tool: get_registry_health
+          arguments:
+            registry: application
+            as_of: "2026-09-08"
+          argument_matching:
+            registry: registry_alias_equivalent
+            as_of: exact
+      ordering_constraints:
+        - - fetch_capability
+          - capability_walk
+        - - fetch_capability
+          - capability_health
+        - - capability_walk
+          - application_health
+      allowed_extra_calls: 0
+      notes:
+        Medication Management is itself sourced from the Capability Registry, so capability health is mandatory. The capability-health
+        call may occur before or after traversal. Traversal may use the returned capability ID, name, or URL.
+    governance:
+      required_registry_checks:
+        - capability_registry
+        - application_registry
+      required_caveats:
+        - id: application_owner_completeness_failure
+          registry: application_registry
+          rule_id: application-owner-completeness
+          actual: 0.8666666666666667
+          operator: greater_than_or_equal
+          threshold: 0.95
+          status: fail
+          must_be_unprompted: true
+      ownership_gaps:
+        - rxbridge-riv
+        - pharmatrack-sth
+      refusal: false
+    citations:
+      required_entity_ids:
+        - medcore-pharmacy-ngc
+        - rxbridge-riv
+        - pharmatrack-sth
+        - application_registry
+      optional_entity_ids:
+        - medication-management
+      allow_unretrieved_urls: false
+    severity:
+      wrong_application_set: critical
+      collapse_site_specific_apps: critical
+      invent_missing_owner: critical
+      missing_application_health_check: major
+      omit_owner_completeness_caveat: major
+      missing_site: major
+      missing_required_citation: minor
+      fabricated_citation: critical
+      unnecessary_tool_call: minor
+  - id: Q8
+    category: registry_governance_application_completeness
+    question: How complete is our application data?
+    outcome:
+      required_entities:
+        - application_registry
+        - rxbridge-riv
+        - pharmatrack-sth
+      required_facts:
+        rule_id: application-owner-completeness
+        actual_fraction: 0.8666666666666667
+        actual_percent: 86.7
+        threshold: 0.95
+        status: fail
+        missing_owner_count: 2
+        missing_owner_applications:
+          - RxBridge
+          - PharmaTrack
+      forbidden_behaviors:
+        - replace_declared_metric_with_different_completeness_metric
+        - round_failure_into_pass
+        - invent_missing_owner
+    trajectory:
+      required_calls:
+        - id: application_health
+          tool: get_registry_health
+          arguments:
+            registry: application
+            as_of: "2026-09-08"
+          argument_matching:
+            registry: registry_alias_equivalent
+            as_of: exact
+      ordering_constraints: []
+      allowed_extra_calls: 0
+    governance:
+      direct_registry_question: true
+      required_rule: application-owner-completeness
+      refusal: false
+    citations:
+      required_entity_ids:
+        - application_registry
+      require_all: true
+      allow_unretrieved_urls: false
+      notes:
+        The two applications are evidence returned by the health rule. The registry citation is mandatory; app citations
+        are optional for this direct metric answer.
+    severity:
+      wrong_metric: critical
+      wrong_actual: critical
+      wrong_threshold: major
+      report_fail_as_pass: critical
+      omit_missing_owner_evidence: major
+      missing_required_citation: minor
+      fabricated_citation: critical
+      unnecessary_tool_call: minor
+evaluation_context:
+  as_of: "2026-09-08"
+  reason: Freeze time-dependent freshness metrics so repeated benchmark runs are comparable.
+evaluator_revision:
+  revision: 2026-09-09-r1
+  basis: Adjudication of 24 real agent traces (Q1-Q8 x 3 replicates).
+  changes:
+    - Q1 canonical-conflict wording check accepts semantically equivalent negation such as "none is enterprise-wide canonical".
+    - Q5/Q7 traversal arguments accept any identifier/name/URL that refers to the entity returned by the prior get_entity call.
+    - Q5 ordering constrains only causally meaningful dependencies; Technology Registry health may be checked before or after
+      traversal.
+    - Q7 Capability Registry health is required because the retrieved capability declares capability_registry as its source
+      registry.
+    - Q5 caveat phrase checks accept comparison wording such as against/versus a limit or threshold, not only the literal word
+      fail.

@@ -1,0 +1,101 @@
+{
+  "timestamp_utc": "2026-09-09T11:31:19.682782+00:00",
+  "question": "How complete is our application data?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_0e8d095807013378006aa1438208cc87d2bfcf2190d4c8a881",
+    "resp_0e8d095807013378006aa14384866487d2a55c25d78d1a5dc0"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_registry_health",
+      "arguments": {
+        "registry": "application",
+        "as_of": "2026-09-08"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "registry": {
+          "id": "application_registry",
+          "name": "Application Registry",
+          "steward": "Enterprise Architecture",
+          "classification": "INTERNAL",
+          "source_systems": [
+            "Architecture Repository",
+            "Application Owner Attestations"
+          ],
+          "refresh_cadence": "monthly",
+          "last_refreshed": "2026-09-01",
+          "entity_url": "northgate://registry/application-registry"
+        },
+        "as_of": "2026-09-08",
+        "rules": [
+          {
+            "id": "application-owner-completeness",
+            "metric": "field_completeness",
+            "operator": "greater_than_or_equal",
+            "threshold": 0.95,
+            "actual": 0.8666666666666667,
+            "passed": false,
+            "status": "fail",
+            "evidence": [
+              {
+                "identifier": "pharmatrack-sth",
+                "name": "PharmaTrack"
+              },
+              {
+                "identifier": "rxbridge-riv",
+                "name": "RxBridge"
+              }
+            ]
+          },
+          {
+            "id": "application-site-completeness",
+            "metric": "field_completeness",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "business-application-capability-coverage",
+            "metric": "relationship_coverage",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          }
+        ],
+        "overall_status": "fail"
+      },
+      "call_id": "call_7P94BO4hXysdmrrj8ORFTJos"
+    }
+  ],
+  "final_answer": "Application data quality currently **fails** its completeness standard. (northgate://registry/application-registry)\n\n- **Owner completeness:** 86.7% vs 95% required — fail.\n- **Site completeness:** 100% — pass.\n- **Capability coverage:** 100% — pass.\n\nThe registry was last refreshed on 2026-09-01 and is stewarded by Enterprise Architecture. (northgate://registry/application-registry)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://registry/application-registry"
+    ],
+    "cited_urls": [
+      "northgate://registry/application-registry"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q8",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "15-30-05",
+    "replicate": 1,
+    "case_id": "Q8",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

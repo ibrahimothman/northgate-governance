@@ -1,0 +1,56 @@
+{
+  "timestamp_utc": "2026-09-09T11:14:46.996839+00:00",
+  "question": "Who owns Legacy MRN?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_0b55e801bdc3278a006aa13f9e4da887d2ac312ba3fa9840f8",
+    "resp_0b55e801bdc3278a006aa13fa1308087d2badb126bb956b862",
+    "resp_0b55e801bdc3278a006aa13fa4330487d299788e2839f89785"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_entity",
+      "arguments": {
+        "entity_type": "application",
+        "identifier": "Legacy MRN"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found"
+      },
+      "call_id": "call_PB58DcuWDMB956J7qYmhkb5g"
+    },
+    {
+      "sequence": 2,
+      "name": "identify_steward",
+      "arguments": {
+        "topic": "ownership of Legacy MRN"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found",
+        "topic": "ownership of Legacy MRN",
+        "reason": "No governed registry could be determined from the topic."
+      },
+      "call_id": "call_BdXTGfHo7dBeJSXYTbHZLBkE"
+    }
+  ],
+  "final_answer": "The catalogue has no application record for “Legacy MRN”; no governed escalation route was identified.",
+  "citations": {
+    "retrieved_urls": [],
+    "cited_urls": [],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q2",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "15-14-17",
+    "replicate": 2,
+    "case_id": "Q2",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

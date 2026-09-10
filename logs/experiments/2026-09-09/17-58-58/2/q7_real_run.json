@@ -1,0 +1,285 @@
+{
+  "timestamp_utc": "2026-09-09T14:01:24.038743+00:00",
+  "question": "Which applications duplicate each other across sites for Medication Management?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_0ee9bc15bf940730006aa166a2715487d1be79abe8d64f2622",
+    "resp_0ee9bc15bf940730006aa166a5c62c87d188e326c0177be323",
+    "resp_0ee9bc15bf940730006aa166a89d9c87d1886d32d755bf7dd3",
+    "resp_0ee9bc15bf940730006aa166ac0f4887d193d8394ec1196647",
+    "resp_0ee9bc15bf940730006aa166ae5dd087d1bd108a1a0c89e894"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_entity",
+      "arguments": {
+        "entity_type": "capability",
+        "identifier": "Medication Management"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "entity_type": "capability",
+        "description": "Capability to prescribe, dispense, administer and manage medications safely across the care pathway.",
+        "entity_url": "northgate://capability/medication-management",
+        "id": "medication-management",
+        "level": 2,
+        "name": "Medication Management",
+        "owner": "Director of Pharmacy",
+        "parent_id": "healthcare-service-delivery",
+        "source_registry": "capability_registry",
+        "steward": "Business Architecture",
+        "match_type": "exact"
+      },
+      "call_id": "call_4GY7uwf8jIwnfPjFkLTSPHB6"
+    },
+    {
+      "sequence": 2,
+      "name": "traverse",
+      "arguments": {
+        "depth": 1,
+        "from_entity": "medication-management",
+        "relationship_type": "application → capability"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "from_entity": {
+          "entity_type": "capability",
+          "id": "medication-management",
+          "entity_url": "northgate://capability/medication-management"
+        },
+        "relationship_type": "application → capability",
+        "depth": 1,
+        "results": [
+          {
+            "relationship_id": "rel-medcore-medication-management",
+            "relationship_type": "application → capability",
+            "predicate": "REALIZES",
+            "direction": "reverse",
+            "entity": {
+              "entity_type": "application",
+              "application_type": "pharmacy",
+              "business_name": "Pharmacy System",
+              "description": "Pharmacy management platform at Northgate Central Hospital, supporting medication ordering, dispensing and administration. Considered the preferred candidate for future group standardisation.",
+              "entity_url": "northgate://application/medcore-pharmacy-ngc",
+              "id": "medcore-pharmacy-ngc",
+              "last_verified": "2026-09-01",
+              "lifecycle_status": "strategic",
+              "merger_status": "site_specific",
+              "name": "MedCore Pharmacy",
+              "owner": "Director of Pharmacy",
+              "site": "NGC",
+              "source_registry": "application_registry",
+              "steward": "Pharmacy Digital Systems"
+            }
+          },
+          {
+            "relationship_id": "rel-pharmatrack-medication-management",
+            "relationship_type": "application → capability",
+            "predicate": "REALIZES",
+            "direction": "reverse",
+            "entity": {
+              "entity_type": "application",
+              "application_type": "pharmacy",
+              "business_name": "Pharmacy System",
+              "description": "St. Helen's pharmacy management platform, tightly integrated with local specialist clinical workflows and retained pending a group medication-platform decision.",
+              "entity_url": "northgate://application/pharmatrack-sth",
+              "id": "pharmatrack-sth",
+              "last_verified": "2026-08-31",
+              "lifecycle_status": "migrate",
+              "merger_status": "site_specific",
+              "name": "PharmaTrack",
+              "owner": null,
+              "site": "STH",
+              "source_registry": "application_registry",
+              "steward": "Pharmacy Digital Systems"
+            }
+          },
+          {
+            "relationship_id": "rel-rxbridge-medication-management",
+            "relationship_type": "application → capability",
+            "predicate": "REALIZES",
+            "direction": "reverse",
+            "entity": {
+              "entity_type": "application",
+              "application_type": "pharmacy",
+              "business_name": "Pharmacy System",
+              "description": "Riverside pharmacy platform supporting medication ordering, dispensing and administration. Retained as a critical local system but carrying significant technology lifecycle risk.",
+              "entity_url": "northgate://application/rxbridge-riv",
+              "id": "rxbridge-riv",
+              "last_verified": "2026-08-28",
+              "lifecycle_status": "migrate",
+              "merger_status": "site_specific",
+              "name": "RxBridge",
+              "owner": null,
+              "site": "RIV",
+              "source_registry": "application_registry",
+              "steward": "Pharmacy Digital Systems"
+            }
+          }
+        ]
+      },
+      "call_id": "call_FTJKrGUljUAD3W9rLPQNF44h"
+    },
+    {
+      "sequence": 3,
+      "name": "get_registry_health",
+      "arguments": {
+        "registry": "capability_registry",
+        "as_of": "2026-09-08"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "registry": {
+          "id": "capability_registry",
+          "name": "Capability Registry",
+          "steward": "Business Architecture",
+          "classification": "INTERNAL",
+          "source_systems": [
+            "Enterprise Capability Model"
+          ],
+          "refresh_cadence": "quarterly",
+          "last_refreshed": "2026-07-01",
+          "entity_url": "northgate://registry/capability-registry"
+        },
+        "as_of": "2026-09-08",
+        "rules": [
+          {
+            "id": "capability-hierarchy-integrity",
+            "metric": "hierarchy_violations",
+            "operator": "equal",
+            "threshold": 0.0,
+            "actual": 0.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "capability-parent-completeness",
+            "metric": "parent_completeness",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "capability-realisation-coverage",
+            "metric": "relationship_coverage",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          }
+        ],
+        "overall_status": "pass"
+      },
+      "call_id": "call_9NJnrLyGvbZjIi0xbHBiubM0"
+    },
+    {
+      "sequence": 4,
+      "name": "get_registry_health",
+      "arguments": {
+        "registry": "application_registry",
+        "as_of": "2026-09-08"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "registry": {
+          "id": "application_registry",
+          "name": "Application Registry",
+          "steward": "Enterprise Architecture",
+          "classification": "INTERNAL",
+          "source_systems": [
+            "Architecture Repository",
+            "Application Owner Attestations"
+          ],
+          "refresh_cadence": "monthly",
+          "last_refreshed": "2026-09-01",
+          "entity_url": "northgate://registry/application-registry"
+        },
+        "as_of": "2026-09-08",
+        "rules": [
+          {
+            "id": "application-owner-completeness",
+            "metric": "field_completeness",
+            "operator": "greater_than_or_equal",
+            "threshold": 0.95,
+            "actual": 0.8666666666666667,
+            "passed": false,
+            "status": "fail",
+            "evidence": [
+              {
+                "identifier": "pharmatrack-sth",
+                "name": "PharmaTrack"
+              },
+              {
+                "identifier": "rxbridge-riv",
+                "name": "RxBridge"
+              }
+            ]
+          },
+          {
+            "id": "application-site-completeness",
+            "metric": "field_completeness",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          },
+          {
+            "id": "business-application-capability-coverage",
+            "metric": "relationship_coverage",
+            "operator": "equal",
+            "threshold": 1.0,
+            "actual": 1.0,
+            "passed": true,
+            "status": "pass",
+            "evidence": []
+          }
+        ],
+        "overall_status": "fail"
+      },
+      "call_id": "call_gkahOYa3GNvOMSaj90KdfPyi"
+    }
+  ],
+  "final_answer": "The cross-site duplication for **Medication Management** is:\n\n- **MedCore Pharmacy** — NGC (northgate://application/medcore-pharmacy-ngc)\n- **PharmaTrack** — STH (northgate://application/pharmatrack-sth)\n- **RxBridge** — RIV (northgate://application/rxbridge-riv)\n\nAll three realise Medication Management (northgate://capability/medication-management).\n\n**Quality caveat:** Application owner completeness is **86.7%**, below the **95%** threshold; PharmaTrack and RxBridge have unassigned owners (northgate://registry/application-registry).",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://application/medcore-pharmacy-ngc",
+      "northgate://application/pharmatrack-sth",
+      "northgate://application/rxbridge-riv",
+      "northgate://capability/medication-management",
+      "northgate://registry/application-registry",
+      "northgate://registry/capability-registry"
+    ],
+    "cited_urls": [
+      "northgate://application/medcore-pharmacy-ngc",
+      "northgate://application/pharmatrack-sth",
+      "northgate://application/rxbridge-riv",
+      "northgate://capability/medication-management",
+      "northgate://registry/application-registry"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q7",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "17-58-58",
+    "replicate": 2,
+    "case_id": "Q7",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

@@ -1,0 +1,208 @@
+as_of: '2026-09-08'
+purpose: Tool-layer acceptance check. These traces are deterministic and prove the catalogue can support the frozen
+  evaluation questions before an LLM is added. They do not measure model tool-selection accuracy.
+cases:
+- id: Q1
+  category: hard_case_conflicting_definitions
+  question: What is a patient?
+  calls:
+  - tool: search_glossary
+    args:
+      term: Patient
+  expect:
+    result_count: 3
+    contexts:
+    - Clinical
+    - Research
+    - Revenue Cycle
+    none_canonical: true
+- id: Q2
+  category: hard_case_orphaned_ownership
+  question: Who owns Legacy MRN?
+  calls:
+  - tool: search_glossary
+    args:
+      term: Legacy MRN
+  expect:
+    result_count: 1
+    owner: null
+    steward: Health Information Management
+- id: Q3
+  category: hard_case_deprecated_term
+  question: What does Inpatient Day Case mean?
+  calls:
+  - tool: search_glossary
+    args:
+      term: Inpatient Day Case
+  expect:
+    status: deprecated
+    replacement: Day Procedure
+- id: Q4
+  category: hard_case_alias
+  question: What is an encounter?
+  calls:
+  - tool: search_glossary
+    args:
+      term: Encounter
+  expect:
+    status: alias
+    canonical_term: Episode of Care
+- id: Q5
+  category: ea_impact_eol
+  question: What's affected if we retire PostgreSQL 11?
+  calls:
+  - tool: get_entity
+    args:
+      entity_type: technology
+      identifier: PostgreSQL 11
+  - tool: traverse
+    args:
+      from_entity: PostgreSQL 11
+      relationship_type: application → technology
+      depth: 1
+  - tool: get_registry_health
+    args:
+      registry: technology
+      as_of: '2026-09-08'
+  - tool: get_registry_health
+    args:
+      registry: application
+      as_of: '2026-09-08'
+  expect:
+    applications:
+    - HelixCare Record
+    - RiverLab Imaging
+    - RxBridge
+    technology_registry_status: fail
+    technology_freshness_days: 34
+    application_registry_status: fail
+    application_owner_completeness: 0.8666666666666667
+- id: Q6
+  category: governance_trap_retention
+  question: How long do we keep inpatient clinical records?
+  calls:
+  - tool: get_entity
+    args:
+      entity_type: dataset
+      identifier: Inpatient Clinical Record
+  expect:
+    retention: 30 years from date of last attendance
+    classification: RESTRICTED
+    steward: Health Information Management
+    quality_caveat: false
+- id: Q7
+  category: ea_duplication
+  question: Which applications duplicate each other across sites for Medication Management?
+  calls:
+  - tool: get_entity
+    args:
+      entity_type: capability
+      identifier: Medication Management
+  - tool: traverse
+    args:
+      from_entity: Medication Management
+      relationship_type: application → capability
+      depth: 1
+  - tool: get_registry_health
+    args:
+      registry: application
+      as_of: '2026-09-08'
+  expect:
+    applications:
+    - MedCore Pharmacy
+    - PharmaTrack
+    - RxBridge
+    sites:
+    - NGC
+    - RIV
+    - STH
+    application_registry_status: fail
+    application_owner_completeness: 0.8666666666666667
+- id: Q8
+  category: registry_governance_application
+  question: How complete is our application data?
+  calls:
+  - tool: get_registry_health
+    args:
+      registry: application
+      as_of: '2026-09-08'
+  expect:
+    owner_completeness: 0.8666666666666667
+    threshold: 0.95
+    status: fail
+    missing_owners:
+    - PharmaTrack
+    - RxBridge
+- id: Q9
+  category: registry_governance_technology
+  question: Where does our technology inventory come from, who stewards it, and is it currently meeting its own
+    freshness rule?
+  calls:
+  - tool: get_entity
+    args:
+      entity_type: registry
+      identifier: Technology Registry
+  - tool: get_registry_health
+    args:
+      registry: technology
+      as_of: '2026-09-08'
+  expect:
+    source_system: endoflife.date
+    steward: Technology Architecture
+    refresh_cadence: monthly
+    freshness_days: 34
+    threshold: 30
+    status: fail
+- id: Q10
+  category: ownership_and_stewardship
+  question: Who owns the Pharmacy System?
+  calls:
+  - tool: get_entity
+    args:
+      entity_type: application
+      identifier: Pharmacy System
+  - tool: resolve_ambiguous_candidates
+    args:
+      entity_type: application
+  - tool: get_registry_health
+    args:
+      registry: application
+      as_of: '2026-09-08'
+  expect:
+    candidate_count: 3
+    applications:
+    - MedCore Pharmacy
+    - PharmaTrack
+    - RxBridge
+    owners:
+      MedCore Pharmacy: Director of Pharmacy
+      PharmaTrack: null
+      RxBridge: null
+    application_registry_status: fail
+- id: Q11
+  category: refusal_missing_catalogue_record
+  question: When does Windows Server 2012 go end of life?
+  calls:
+  - tool: get_entity
+    args:
+      entity_type: technology
+      identifier: Windows Server 2012
+  - tool: identify_steward
+    args:
+      topic: Windows Server 2012 end-of-life
+  expect:
+    entity_status: not_found
+    registry: Technology Registry
+    steward: Technology Architecture
+    refusal_reason: missing_catalogue_record
+- id: Q12
+  category: refusal_aggregate_out_of_scope
+  question: How many applications are past EOL overall?
+  calls:
+  - tool: identify_steward
+    args:
+      topic: applications past end of life
+  expect:
+    registry: Application Registry
+    steward: Enterprise Architecture
+    refusal_reason: aggregate_routing_out_of_scope

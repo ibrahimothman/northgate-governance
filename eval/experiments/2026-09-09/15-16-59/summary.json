@@ -1,0 +1,189 @@
+{
+  "experiment_dir": "eval/experiments/2026-09-09/15-16-59",
+  "experiment_id": "15-16-59",
+  "replicates": 3,
+  "pass_rate_by_case": {
+    "Q2": "0/3",
+    "Q6": "3/3"
+  },
+  "pass_rate_by_replicate": {
+    "1": "1/2",
+    "2": "1/2",
+    "3": "1/2"
+  },
+  "replicates_detail": [
+    {
+      "replicate_dir": "eval/experiments/2026-09-09/15-16-59/1",
+      "cases_passed": 1,
+      "cases_total": 2,
+      "results": [
+        {
+          "case_id": "Q2",
+          "passed": false,
+          "highest_failure_severity": "critical",
+          "dimensions": {
+            "outcome": {
+              "passed": false
+            },
+            "trajectory": {
+              "passed": false
+            },
+            "governance": {
+              "passed": false
+            },
+            "citations": {
+              "passed": true
+            }
+          },
+          "failed_checks": [
+            "expected_tool",
+            "tool_arguments",
+            "extra_tool_calls",
+            "legacy_mrn_retrieved",
+            "owner_is_null",
+            "steward_matches",
+            "ownership_gap_stated",
+            "steward_mentioned"
+          ],
+          "grade_file": "q2_grade.json",
+          "trace_file": "q2_real_run.json"
+        },
+        {
+          "case_id": "Q6",
+          "passed": true,
+          "highest_failure_severity": null,
+          "dimensions": {
+            "outcome": {
+              "passed": true
+            },
+            "trajectory": {
+              "passed": true
+            },
+            "governance": {
+              "passed": true
+            },
+            "citations": {
+              "passed": true
+            }
+          },
+          "failed_checks": [],
+          "grade_file": "q6_grade.json",
+          "trace_file": "q6_real_run.json"
+        }
+      ]
+    },
+    {
+      "replicate_dir": "eval/experiments/2026-09-09/15-16-59/2",
+      "cases_passed": 1,
+      "cases_total": 2,
+      "results": [
+        {
+          "case_id": "Q2",
+          "passed": false,
+          "highest_failure_severity": "major",
+          "dimensions": {
+            "outcome": {
+              "passed": true
+            },
+            "trajectory": {
+              "passed": true
+            },
+            "governance": {
+              "passed": false
+            },
+            "citations": {
+              "passed": true
+            }
+          },
+          "failed_checks": [
+            "ownership_gap_stated"
+          ],
+          "grade_file": "q2_grade.json",
+          "trace_file": "q2_real_run.json"
+        },
+        {
+          "case_id": "Q6",
+          "passed": true,
+          "highest_failure_severity": null,
+          "dimensions": {
+            "outcome": {
+              "passed": true
+            },
+            "trajectory": {
+              "passed": true
+            },
+            "governance": {
+              "passed": true
+            },
+            "citations": {
+              "passed": true
+            }
+          },
+          "failed_checks": [],
+          "grade_file": "q6_grade.json",
+          "trace_file": "q6_real_run.json"
+        }
+      ]
+    },
+    {
+      "replicate_dir": "eval/experiments/2026-09-09/15-16-59/3",
+      "cases_passed": 1,
+      "cases_total": 2,
+      "results": [
+        {
+          "case_id": "Q2",
+          "passed": false,
+          "highest_failure_severity": "critical",
+          "dimensions": {
+            "outcome": {
+              "passed": false
+            },
+            "trajectory": {
+              "passed": false
+            },
+            "governance": {
+              "passed": false
+            },
+            "citations": {
+              "passed": true
+            }
+          },
+          "failed_checks": [
+            "expected_tool",
+            "tool_arguments",
+            "extra_tool_calls",
+            "legacy_mrn_retrieved",
+            "owner_is_null",
+            "steward_matches",
+            "ownership_gap_stated",
+            "steward_mentioned"
+          ],
+          "grade_file": "q2_grade.json",
+          "trace_file": "q2_real_run.json"
+        },
+        {
+          "case_id": "Q6",
+          "passed": true,
+          "highest_failure_severity": null,
+          "dimensions": {
+            "outcome": {
+              "passed": true
+            },
+            "trajectory": {
+              "passed": true
+            },
+            "governance": {
+              "passed": true
+            },
+            "citations": {
+              "passed": true
+            }
+          },
+          "failed_checks": [],
+          "grade_file": "q6_grade.json",
+          "trace_file": "q6_real_run.json"
+        }
+      ]
+    }
+  ]
+}

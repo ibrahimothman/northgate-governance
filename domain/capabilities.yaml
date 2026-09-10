@@ -1,0 +1,61 @@
+capabilities:
+- id: healthcare-service-delivery
+  name: Healthcare Service Delivery
+  level: 1
+  parent_id: null
+  description: Enterprise capability covering the delivery and administration of healthcare services across
+    Northgate Health Group.
+  owner: Chief Operating Officer
+  steward: Business Architecture
+  source_registry: capability_registry
+  entity_url: northgate://capability/healthcare-service-delivery
+- id: patient-administration
+  name: Patient Administration
+  level: 2
+  parent_id: healthcare-service-delivery
+  description: Capability to register patients, manage appointments and admissions, support patient access,
+    and administer billing-related service activity.
+  owner: Director of Patient Access
+  steward: Business Architecture
+  source_registry: capability_registry
+  entity_url: northgate://capability/patient-administration
+- id: clinical-care-management
+  name: Clinical Care Management
+  level: 2
+  parent_id: healthcare-service-delivery
+  description: Capability to document, coordinate and manage clinical assessment, treatment, care decisions
+    and patient clinical history.
+  owner: Chief Medical Officer
+  steward: Business Architecture
+  source_registry: capability_registry
+  entity_url: northgate://capability/clinical-care-management
+- id: medication-management
+  name: Medication Management
+  level: 2
+  parent_id: healthcare-service-delivery
+  description: Capability to prescribe, dispense, administer and manage medications safely across the
+    care pathway.
+  owner: Director of Pharmacy
+  steward: Business Architecture
+  source_registry: capability_registry
+  entity_url: northgate://capability/medication-management
+- id: diagnostic-services-management
+  name: Diagnostic Services Management
+  level: 2
+  parent_id: healthcare-service-delivery
+  description: Capability to request, perform, record and manage laboratory, imaging and other diagnostic
+    services and their results.
+  owner: Director of Diagnostic Services
+  steward: Business Architecture
+  source_registry: capability_registry
+  entity_url: northgate://capability/diagnostic-services-management
+- id: health-information-management
+  name: Health Information Management
+  level: 2
+  parent_id: healthcare-service-delivery
+  description: Capability to manage clinical records, healthcare documentation, record retention and controlled
+    access to health information.
+  owner: Director of Health Information Management
+  steward: Business Architecture
+  source_registry: capability_registry
+  entity_url: northgate://capability/health-information-management

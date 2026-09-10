@@ -1,0 +1,215 @@
+glossary:
+- id: patient-clinical
+  term: Patient
+  definition: An individual receiving or registered to receive clinical assessment, treatment, monitoring
+    or care from Northgate Health Group.
+  context: Clinical
+  status: active
+  canonical: false
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Chief Medical Officer
+  steward: Clinical Governance
+  governance_note: One of three surviving definitions inherited through the merger. No enterprise-wide
+    canonical definition has been declared.
+  entity_url: northgate://glossary/patient-clinical
+- id: patient-billing
+  term: Patient
+  definition: An individual to whom a billable healthcare service, charge, account or claim is associated
+    for revenue-cycle processing.
+  context: Revenue Cycle
+  status: active
+  canonical: false
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Director of Revenue Cycle
+  steward: Revenue Cycle Management
+  governance_note: One of three surviving definitions inherited through the merger. No enterprise-wide
+    canonical definition has been declared.
+  entity_url: northgate://glossary/patient-billing
+- id: patient-research
+  term: Patient
+  definition: An individual whose healthcare information is represented in an approved research dataset
+    or study population.
+  context: Research
+  status: active
+  canonical: false
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Director of Research
+  steward: Research Governance
+  governance_note: One of three surviving definitions inherited through the merger. No enterprise-wide
+    canonical definition has been declared.
+  entity_url: northgate://glossary/patient-research
+- id: episode-of-care
+  term: Episode of Care
+  definition: A bounded period of healthcare activity relating to a particular clinical need, condition
+    or course of treatment.
+  context: Clinical
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms:
+  - Encounter
+  owner: Chief Medical Officer
+  steward: Clinical Governance
+  governance_note: null
+  entity_url: northgate://glossary/episode-of-care
+- id: encounter
+  term: Encounter
+  definition: null
+  context: Clinical
+  status: alias
+  canonical: false
+  alias_of: episode-of-care
+  replaced_by: null
+  synonyms: []
+  owner: Chief Medical Officer
+  steward: Clinical Governance
+  governance_note: Retained as a searchable alias for the canonical term Episode of Care.
+  entity_url: northgate://glossary/encounter
+- id: admission
+  term: Admission
+  definition: The formal administrative event by which a patient begins an inpatient episode of care.
+  context: Patient Administration
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Director of Patient Access
+  steward: Patient Administration
+  governance_note: null
+  entity_url: northgate://glossary/admission
+- id: discharge
+  term: Discharge
+  definition: The formal administrative event marking the end of an inpatient episode of care at a Northgate
+    facility.
+  context: Patient Administration
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Director of Patient Access
+  steward: Patient Administration
+  governance_note: null
+  entity_url: northgate://glossary/discharge
+- id: medical-record-number
+  term: Medical Record Number
+  definition: A healthcare-record identifier assigned to a patient within Northgate's current patient-identity
+    model.
+  context: Health Information Management
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms:
+  - MRN
+  owner: Director of Health Information Management
+  steward: Health Information Management
+  governance_note: null
+  entity_url: northgate://glossary/medical-record-number
+- id: legacy-mrn
+  term: Legacy MRN
+  definition: A patient identifier originating from a pre-merger hospital record system and retained for
+    historical lookup and reconciliation.
+  context: Health Information Management
+  status: active
+  canonical: false
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: null
+  steward: Health Information Management
+  governance_note: Formal ownership has not been reassigned since the records manager responsible for
+    the term left during merger integration.
+  entity_url: northgate://glossary/legacy-mrn
+- id: inpatient-day-case
+  term: Inpatient Day Case
+  definition: Historical term for a planned hospital treatment completed without an overnight stay.
+  context: Clinical Administration
+  status: deprecated
+  canonical: false
+  alias_of: null
+  replaced_by: day-procedure
+  synonyms: []
+  owner: Director of Patient Access
+  steward: Patient Administration
+  governance_note: Deprecated after terminology harmonisation but still used verbally in parts of the
+    merged organisation.
+  entity_url: northgate://glossary/inpatient-day-case
+- id: day-procedure
+  term: Day Procedure
+  definition: A planned clinical procedure where the patient is admitted, treated and discharged without
+    an overnight stay.
+  context: Clinical Administration
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms:
+  - Inpatient Day Case
+  owner: Director of Patient Access
+  steward: Patient Administration
+  governance_note: null
+  entity_url: northgate://glossary/day-procedure
+- id: medication-order
+  term: Medication Order
+  definition: An authorised instruction for a medication to be prescribed, dispensed or administered to
+    a patient.
+  context: Pharmacy
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Director of Pharmacy
+  steward: Pharmacy Services
+  governance_note: null
+  entity_url: northgate://glossary/medication-order
+- id: diagnostic-order
+  term: Diagnostic Order
+  definition: A request for a laboratory, imaging or other diagnostic examination to be performed for
+    a patient.
+  context: Diagnostics
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Director of Diagnostic Services
+  steward: Diagnostic Services
+  governance_note: null
+  entity_url: northgate://glossary/diagnostic-order
+- id: clinical-note
+  term: Clinical Note
+  definition: Clinical documentation authored by an authorised healthcare professional describing assessment,
+    observations, decisions or care delivered.
+  context: Clinical
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Chief Medical Officer
+  steward: Clinical Governance
+  governance_note: null
+  entity_url: northgate://glossary/clinical-note
+- id: research-subject
+  term: Research Subject
+  definition: An individual represented within an approved research study or governed research dataset.
+  context: Research
+  status: active
+  canonical: true
+  alias_of: null
+  replaced_by: null
+  synonyms: []
+  owner: Director of Research
+  steward: Research Governance
+  governance_note: null
+  entity_url: northgate://glossary/research-subject

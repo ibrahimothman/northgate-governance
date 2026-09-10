@@ -1,0 +1,349 @@
+{
+  "case_id": "Q5",
+  "question": "What's affected if we retire PostgreSQL 11?",
+  "passed": true,
+  "highest_failure_severity": null,
+  "dimensions": {
+    "outcome": {
+      "passed": true,
+      "checks_passed": 3,
+      "checks_total": 3
+    },
+    "trajectory": {
+      "passed": true,
+      "checks_passed": 8,
+      "checks_total": 8
+    },
+    "governance": {
+      "passed": true,
+      "checks_passed": 4,
+      "checks_total": 4
+    },
+    "citations": {
+      "passed": true,
+      "checks_passed": 2,
+      "checks_total": 2
+    }
+  },
+  "checks": [
+    {
+      "name": "required_call:fetch_technology",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_entity",
+        "arguments": {
+          "entity_type": "technology",
+          "identifier": "PostgreSQL 11"
+        }
+      },
+      "actual": {
+        "entity_type": "technology",
+        "identifier": "PostgreSQL 11"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "required_call:impact_walk",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "traverse",
+        "arguments": {
+          "from_entity": "PostgreSQL 11",
+          "relationship_type": "application → technology",
+          "depth": 1
+        }
+      },
+      "actual": {
+        "depth": 1,
+        "from_entity": "postgresql-11",
+        "relationship_type": "application → technology"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "required_call:technology_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_registry_health",
+        "arguments": {
+          "registry": "technology",
+          "as_of": "2026-09-08"
+        }
+      },
+      "actual": {
+        "registry": "technology_registry",
+        "as_of": "2026-09-08"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "required_call:application_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": {
+        "tool": "get_registry_health",
+        "arguments": {
+          "registry": "application",
+          "as_of": "2026-09-08"
+        }
+      },
+      "actual": {
+        "registry": "application_registry",
+        "as_of": "2026-09-08"
+      },
+      "explanation": ""
+    },
+    {
+      "name": "ordering:fetch_technology_before_impact_walk",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "fetch_technology before impact_walk",
+      "actual": {
+        "fetch_technology": 0,
+        "impact_walk": 2
+      },
+      "explanation": ""
+    },
+    {
+      "name": "ordering:fetch_technology_before_technology_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "fetch_technology before technology_health",
+      "actual": {
+        "fetch_technology": 0,
+        "technology_health": 1
+      },
+      "explanation": ""
+    },
+    {
+      "name": "ordering:impact_walk_before_application_health",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "impact_walk before application_health",
+      "actual": {
+        "impact_walk": 2,
+        "application_health": 3
+      },
+      "explanation": ""
+    },
+    {
+      "name": "extra_tool_calls",
+      "dimension": "trajectory",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": 0,
+      "actual": 0,
+      "explanation": ""
+    },
+    {
+      "name": "technology_retrieved",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": "postgresql-11",
+      "actual": "postgresql-11",
+      "explanation": ""
+    },
+    {
+      "name": "exact_impact_set",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": [
+        "helixcare-record-sth",
+        "riverlab-imaging-riv",
+        "rxbridge-riv"
+      ],
+      "actual": [
+        "helixcare-record-sth",
+        "riverlab-imaging-riv",
+        "rxbridge-riv"
+      ],
+      "explanation": ""
+    },
+    {
+      "name": "technology_freshness_rule",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": {
+        "actual": 34.0,
+        "threshold": 30.0,
+        "status": "fail"
+      },
+      "actual": {
+        "id": "technology-verification-freshness",
+        "metric": "maximum_age_days",
+        "operator": "less_than_or_equal",
+        "threshold": 30.0,
+        "actual": 34.0,
+        "passed": false,
+        "status": "fail",
+        "evidence": [
+          {
+            "identifier": "mysql-5-7",
+            "name": "MySQL 5.7",
+            "age_days": 34
+          },
+          {
+            "identifier": "nodejs-18",
+            "name": "Node.js 18",
+            "age_days": 34
+          },
+          {
+            "identifier": "nodejs-22",
+            "name": "Node.js 22",
+            "age_days": 34
+          },
+          {
+            "identifier": "postgresql-11",
+            "name": "PostgreSQL 11",
+            "age_days": 34
+          },
+          {
+            "identifier": "postgresql-15",
+            "name": "PostgreSQL 15",
+            "age_days": 34
+          },
+          {
+            "identifier": "postgresql-16",
+            "name": "PostgreSQL 16",
+            "age_days": 34
+          },
+          {
+            "identifier": "rhel-8",
+            "name": "Red Hat Enterprise Linux 8",
+            "age_days": 34
+          },
+          {
+            "identifier": "rhel-9",
+            "name": "Red Hat Enterprise Linux 9",
+            "age_days": 34
+          },
+          {
+            "identifier": "tomcat-10-1",
+            "name": "Apache Tomcat 10.1",
+            "age_days": 34
+          },
+          {
+            "identifier": "tomcat-8-5",
+            "name": "Apache Tomcat 8.5",
+            "age_days": 34
+          },
+          {
+            "identifier": "windows-server-2019",
+            "name": "Windows Server 2019",
+            "age_days": 34
+          },
+          {
+            "identifier": "windows-server-2022",
+            "name": "Windows Server 2022",
+            "age_days": 34
+          }
+        ]
+      },
+      "explanation": ""
+    },
+    {
+      "name": "application_owner_rule",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": {
+        "actual": 0.8666666666666667,
+        "threshold": 0.95,
+        "status": "fail"
+      },
+      "actual": {
+        "id": "application-owner-completeness",
+        "metric": "field_completeness",
+        "operator": "greater_than_or_equal",
+        "threshold": 0.95,
+        "actual": 0.8666666666666667,
+        "passed": false,
+        "status": "fail",
+        "evidence": [
+          {
+            "identifier": "pharmatrack-sth",
+            "name": "PharmaTrack"
+          },
+          {
+            "identifier": "rxbridge-riv",
+            "name": "RxBridge"
+          }
+        ]
+      },
+      "explanation": ""
+    },
+    {
+      "name": "all_affected_applications_named",
+      "dimension": "outcome",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "freshness_caveat_stated",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "owner_completeness_caveat_stated",
+      "dimension": "governance",
+      "passed": true,
+      "severity_if_failed": "major",
+      "expected": null,
+      "actual": null,
+      "explanation": ""
+    },
+    {
+      "name": "citation_integrity",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "critical",
+      "expected": "all cited northgate:// URLs were retrieved",
+      "actual": [],
+      "explanation": ""
+    },
+    {
+      "name": "citation_completeness",
+      "dimension": "citations",
+      "passed": true,
+      "severity_if_failed": "minor",
+      "expected": [
+        "northgate://application/helixcare-record-sth",
+        "northgate://application/riverlab-imaging-riv",
+        "northgate://application/rxbridge-riv",
+        "northgate://registry/application-registry",
+        "northgate://registry/technology-registry",
+        "northgate://technology/postgresql-11"
+      ],
+      "actual": [
+        "northgate://application/helixcare-record-sth",
+        "northgate://application/riverlab-imaging-riv",
+        "northgate://application/rxbridge-riv",
+        "northgate://registry/application-registry",
+        "northgate://registry/technology-registry",
+        "northgate://technology/postgresql-11"
+      ],
+      "explanation": ""
+    }
+  ],
+  "note": "Typed impact plus mandatory technology/application registry caveats."
+}

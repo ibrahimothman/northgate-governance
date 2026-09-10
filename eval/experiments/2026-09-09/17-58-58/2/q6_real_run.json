@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-09-09T14:01:06.185687+00:00",
+  "question": "How long do we keep inpatient clinical records?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_040aa6462b124f41006aa1669b5c5487d1844513e73d9e51c1",
+    "resp_040aa6462b124f41006aa1669f984c87d1b8686e76cc1ecadc"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_entity",
+      "arguments": {
+        "entity_type": "dataset",
+        "identifier": "inpatient clinical records"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "entity_type": "dataset",
+        "classification": "RESTRICTED",
+        "contains_health_data": true,
+        "contains_personal_data": true,
+        "description": "Governed clinical record for inpatient care, including clinical documentation and other information retained as part of the patient's inpatient record.",
+        "entity_url": "northgate://dataset/inpatient-clinical-record",
+        "id": "inpatient-clinical-record",
+        "legal_basis": "provision_of_healthcare",
+        "name": "Inpatient Clinical Record",
+        "retention": "30 years from date of last attendance",
+        "steward": "Health Information Management",
+        "match_type": "normalized",
+        "normalized_query": "inpatient clinical record"
+      },
+      "call_id": "call_37y7OC2zDbRCNtcigrriqQBn"
+    }
+  ],
+  "final_answer": "Inpatient clinical records are kept for **30 years from the date of last attendance**. (northgate://dataset/inpatient-clinical-record)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://dataset/inpatient-clinical-record"
+    ],
+    "cited_urls": [
+      "northgate://dataset/inpatient-clinical-record"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q6",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "17-58-58",
+    "replicate": 2,
+    "case_id": "Q6",
+    "benchmark_as_of": "2026-09-08"
+  }
+}

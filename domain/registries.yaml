@@ -1,0 +1,100 @@
+registries:
+- id: application_registry
+  name: Application Registry
+  description: Governed inventory of applications operated across Northgate Health Group, including ownership,
+    site, lifecycle and portfolio classification information.
+  entity_type: application
+  steward: Enterprise Architecture
+  classification: INTERNAL
+  source_systems:
+  - Architecture Repository
+  - Application Owner Attestations
+  refresh_cadence: monthly
+  last_refreshed: '2026-09-01'
+  quality_rules:
+  - id: application-owner-completeness
+    metric: field_completeness
+    description: Percentage of application records with a recorded business owner.
+    field: owner
+    operator: greater_than_or_equal
+    threshold: 0.95
+  - id: application-site-completeness
+    metric: field_completeness
+    description: Every application must identify its operating scope or hospital site.
+    field: site
+    operator: equal
+    threshold: 1.0
+  - id: business-application-capability-coverage
+    metric: relationship_coverage
+    description: Every business application must realise at least one governed business capability.
+    relationship_type: application → capability
+    excluded_application_types:
+    - integration
+    operator: equal
+    threshold: 1.0
+  entity_url: northgate://registry/application-registry
+- id: capability_registry
+  name: Capability Registry
+  description: Governed hierarchy of business capabilities used to describe application portfolio coverage
+    across Northgate Health Group.
+  entity_type: capability
+  steward: Business Architecture
+  classification: INTERNAL
+  source_systems:
+  - Enterprise Capability Model
+  refresh_cadence: quarterly
+  last_refreshed: '2026-07-01'
+  quality_rules:
+  - id: capability-parent-completeness
+    metric: parent_completeness
+    description: Every Level 2 capability must reference a valid parent capability.
+    applicable_level: 2
+    operator: equal
+    threshold: 1.0
+  - id: capability-hierarchy-integrity
+    metric: hierarchy_violations
+    description: Capability hierarchy must contain no missing parents, self-references or invalid level
+      relationships.
+    operator: equal
+    threshold: 0
+  - id: capability-realisation-coverage
+    metric: relationship_coverage
+    description: Every Level 2 capability must be realised by at least one application.
+    applicable_level: 2
+    relationship_type: application → capability
+    operator: equal
+    threshold: 1.0
+  entity_url: northgate://registry/capability-registry
+- id: technology_registry
+  name: Technology Registry
+  description: Governed inventory of technology products and versions used by Northgate applications,
+    including lifecycle and support information.
+  entity_type: technology
+  steward: Technology Architecture
+  classification: INTERNAL
+  source_systems:
+  - Architecture Repository
+  - endoflife.date
+  refresh_cadence: monthly
+  last_refreshed: '2026-08-05'
+  quality_rules:
+  - id: technology-lifecycle-completeness
+    metric: field_completeness
+    description: Every technology must contain sufficient lifecycle information to determine its current
+      support status.
+    field: lifecycle_status
+    operator: equal
+    threshold: 1.0
+  - id: technology-verification-freshness
+    metric: maximum_age_days
+    description: Technology lifecycle records must have been verified within the previous 30 days.
+    field: last_verified
+    operator: less_than_or_equal
+    threshold: 30
+  - id: technology-application-linkage
+    metric: relationship_coverage
+    description: Every technology in the governed inventory must be linked to at least one application.
+    relationship_type: application → technology
+    operator: equal
+    threshold: 1.0
+  entity_url: northgate://registry/technology-registry

@@ -1,0 +1,93 @@
+{
+  "timestamp_utc": "2026-09-09T13:47:16.657607+00:00",
+  "question": "Who owns Legacy MRN?",
+  "model": "gpt-5.6",
+  "reasoning_effort": "medium",
+  "response_ids": [
+    "resp_0315b3515a2312b1006aa16351385c87d194d9814e693c32c9",
+    "resp_0315b3515a2312b1006aa16358241887d18d4de3d7b8beeb3c",
+    "resp_0315b3515a2312b1006aa1635d04cc87d1b62d72055be3361f",
+    "resp_0315b3515a2312b1006aa1636184fc87d18634d96c50142fc3"
+  ],
+  "tools_called": [
+    {
+      "sequence": 1,
+      "name": "get_entity",
+      "arguments": {
+        "entity_type": "application",
+        "identifier": "Legacy MRN"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found"
+      },
+      "call_id": "call_AjtgaeIvaEnb8P9JyjWmq3Xs"
+    },
+    {
+      "sequence": 2,
+      "name": "identify_steward",
+      "arguments": {
+        "topic": "ownership of Legacy MRN"
+      },
+      "result": {
+        "found": false,
+        "status": "not_found",
+        "topic": "ownership of Legacy MRN",
+        "reason": "No governed registry could be determined from the topic."
+      },
+      "call_id": "call_Q8ineU5tf7288ZE9FJiipy8D"
+    },
+    {
+      "sequence": 3,
+      "name": "search_glossary",
+      "arguments": {
+        "term": "Legacy MRN"
+      },
+      "result": {
+        "found": true,
+        "status": "ok",
+        "query": "Legacy MRN",
+        "match_type": "exact",
+        "results": [
+          {
+            "entity_type": "glossary",
+            "alias_of": null,
+            "canonical": false,
+            "context": "Health Information Management",
+            "definition": "A patient identifier originating from a pre-merger hospital record system and retained for historical lookup and reconciliation.",
+            "entity_url": "northgate://glossary/legacy-mrn",
+            "governance_note": "Formal ownership has not been reassigned since the records manager responsible for the term left during merger integration.",
+            "id": "legacy-mrn",
+            "owner": null,
+            "replaced_by": null,
+            "status": "active",
+            "steward": "Health Information Management",
+            "synonyms": [],
+            "term": "Legacy MRN"
+          }
+        ]
+      },
+      "call_id": "call_mKRDUBumojHT7CBsZRpRNAuj"
+    }
+  ],
+  "final_answer": "Legacy MRN’s owner is unassigned. Its steward is Health Information Management. (northgate://glossary/legacy-mrn)",
+  "citations": {
+    "retrieved_urls": [
+      "northgate://glossary/legacy-mrn"
+    ],
+    "cited_urls": [
+      "northgate://glossary/legacy-mrn"
+    ],
+    "invalid_urls": [],
+    "passed": true
+  },
+  "status": "completed",
+  "case_id": "Q2",
+  "experiment": {
+    "date": "2026-09-09",
+    "experiment_id": "17-46-45",
+    "replicate": 1,
+    "case_id": "Q2",
+    "benchmark_as_of": "2026-09-08"
+  }
+}
