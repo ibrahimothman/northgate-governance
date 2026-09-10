@@ -399,7 +399,7 @@ Those misses are intentionally kept visible.
 
 The objective of the eval layer is not to claim production-grade reliability. It is to make failures **observable, classifiable and actionable**.
 
-See `[eval/README.md](./eval/README.md)` and `[EXPERIMENT_RESULTS.md](./EXPERIMENT_RESULTS.md)` for the detailed benchmark.
+See `[eval/README.md](./eval/README.md)` and `[eval/EXPERIMENT_RESULTS.md](./eval/EXPERIMENT_RESULTS.md)` for the detailed benchmark.
 
 ---
 
